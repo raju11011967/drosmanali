@@ -164,7 +164,7 @@
         <nav>
             <div class="logo">Dr. Jane Smith, MD</div>
             <ul>
-                <li><a href="#home" class="tab-link">Home</a></li>
+                <li><a href="#home" class="tab-link active">Home</a></li>
                 <li><a href="#overview" class="tab-link">Overview</a></li>
                 <li><a href="#services" class="tab-link">Services</a></li>
                 <li><a href="#conditions" class="tab-link">Conditions</a></li>
@@ -245,10 +245,12 @@
             <h2>Contact Us</h2>
             <p>Reach out to schedule an appointment or inquire about our services.</p>
             <div class="contact-form">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" placeholder="Email Address" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button onclick="submitForm()">Send Message</button>
+                <form id="contactForm">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
             </div>
             <p>Phone: (123) 456-7890<br>Email: info@drjanesmith.com<br>Address: 123 Wellness Way, Suite 100, City, State 12345</p>
         </div>
@@ -262,27 +264,36 @@
         const tabLinks = document.querySelectorAll('.tab-link');
         const tabPanes = document.querySelectorAll('.tab-pane');
 
+        // Set initial active tab
+        tabLinks[0].style.backgroundColor = '#34495e';
+
         tabLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const targetTab = link.getAttribute('href').substring(1);
 
+                // Hide all tab panes and reset link styles
                 tabPanes.forEach(pane => {
                     pane.classList.remove('active');
-                    if (pane.id === targetTab) {
-                        pane.classList.add('active');
-                    }
+                });
+                tabLinks.forEach(l => {
+                    l.style.backgroundColor = '';
+                    l.classList.remove('active');
                 });
 
-                tabLinks.forEach(l => l.style.backgroundColor = '');
+                // Show selected tab pane and highlight link
+                document.getElementById(targetTab).classList.add('active');
                 link.style.backgroundColor = '#34495e';
+                link.classList.add('active');
             });
         });
 
-        function submitForm() {
+        // Handle form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
             alert('Thank you for your message! We will get back to you soon.');
-            // Note: Form submission would require backend integration for actual functionality
-        }
+            e.target.reset(); // Reset form fields
+        });
     </script>
 </body>
 </html>
