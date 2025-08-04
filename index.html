@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Osman Ali - Psychiatrist</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      color: #333;
+      background-color: #f4f7fa;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 1rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 2rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      transition: background-color 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      background-color: #34495e;
+      border-radius: 5px;
+    }
+
+    .tab-content {
+      max-width: 1200px;
+      margin: 100px auto 20px;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    h1, h2 {
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    .services-grid, .conditions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .service-card, .condition-card {
+      background-color: #e8f0fe;
+      padding: 1.5rem;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover, .condition-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 2rem auto;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .contact-form button {
+      background-color: #2c3e50;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .contact-form button:hover {
+      background-color: #34495e;
+    }
+
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin: 0.5rem 0;
+      }
+
+      .tab-content {
+        margin: 80px 1rem 1rem;
+        padding: 1rem;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Dr. Osman Ali</div>
+      <ul>
+        <li><a href="#home" class="tab-link active">Home</a></li>
+        <li><a href="#overview" class="tab-link">Overview</a></li>
+        <li><a href="#services" class="tab-link">Services</a></li>
+        <li><a href="#conditions" class="tab-link">Conditions</a></li>
+        <li><a href="#resources" class="tab-link">Resources</a></li>
+        <li><a href="#contact" class="tab-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane active">
+      <h1>Welcome to Dr. Osman Ali's Practice</h1>
+      <p>Providing compassionate and comprehensive mental health care to help you thrive.</p>
+      <p>Dr. Md Osman Ali is a Psychotherapist and General Physician in Himayat Nagar, Hyderabad, with 14+ years of experience (9 as a specialist). Verified Medical Registration.</p>
+    </div>
+
+    <div id="overview" class="tab-pane">
+      <h2>About Dr. Osman Ali</h2>
+      <p>Dr. Md Osman Ali is a verified Psychotherapist and General Physician with 14+ years of experience. He specializes in treating psychiatric conditions with a compassionate and holistic approach.</p>
+      <p>Education: MBBS, DPM (Psychiatry)<br>Experience: 14+ years in General Medicine and Psychiatry<br>Location: Himayat Nagar, Hyderabad</p>
+    </div>
+
+    <div id="services" class="tab-pane">
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Individual Therapy</h3>
+          <p>Personalized sessions to address your unique mental health needs.</p>
+        </div>
+        <div class="service-card">
+          <h3>Medication Management</h3>
+          <p>Expert guidance on psychiatric medications for optimal treatment.</p>
+        </div>
+        <div class="service-card">
+          <h3>Telepsychiatry</h3>
+          <p>Convenient virtual consultations for flexible care.</p>
+        </div>
+        <div class="service-card">
+          <h3>Group Therapy</h3>
+          <p>Supportive group sessions to foster connection and growth.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="conditions" class="tab-pane">
+      <h2>Psychiatric Conditions Treated</h2>
+      <div class="conditions-grid">
+        <div class="condition-card">
+          <h3>Anxiety Disorders</h3>
+          <p>Generalized anxiety, panic disorder, and social anxiety.</p>
+        </div>
+        <div class="condition-card">
+          <h3>Depression</h3>
+          <p>Major depressive disorder and persistent depressive disorder.</p>
+        </div>
+        <div class="condition-card">
+          <h3>Bipolar Disorder</h3>
+          <p>Management of mood swings and related symptoms.</p>
+        </div>
+        <div class="condition-card">
+          <h3>PTSD</h3>
+          <p>Trauma-focused care for post-traumatic stress disorder.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="resources" class="tab-pane">
+      <h2>Mental Health Resources</h2>
+      <p>Explore helpful resources to support your mental wellness journey:</p>
+      <ul>
+        <li><a href="https://www.nami.org" target="_blank">National Alliance on Mental Illness (NAMI)</a></li>
+        <li><a href="https://www.mentalhealth.gov" target="_blank">MentalHealth.gov</a></li>
+        <li><a href="https://www.apa.org" target="_blank">American Psychological Association</a></li>
+      </ul>
+    </div>
+
+    <div id="contact" class="tab-pane">
+      <h2>Contact Us</h2>
+      <p>Reach out to schedule an appointment or inquire about our services.</p>
+      <div class="contact-form">
+        <form id="contactForm">
+          <input type="text" placeholder="Full Name" required>
+          <input type="email" placeholder="Email Address" required>
+          <textarea placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+      <p>Phone: +91-XXXXXXXXXX<br>Email: drosmanali@gmail.com<br>Address: Himayat Nagar, Hyderabad</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Dr. Md Osman Ali. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    function activateTab(tabId) {
+      tabPanes.forEach(pane => pane.classList.remove('active'));
+      tabLinks.forEach(link => {
+        link.classList.remove('active');
+        link.style.backgroundColor = '';
+      });
+
+      document.getElementById(tabId).classList.add('active');
+      const activeLink = document.querySelector(`.tab-link[href="#${tabId}"]`);
+      if (activeLink) {
+        activeLink.classList.add('active');
+        activeLink.style.backgroundColor = '#34495e';
+      }
+    }
+
+    tabLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tabId = link.getAttribute('href').substring(1);
+        activateTab(tabId);
+      });
+    });
+
+    // On page load, activate hash tab or default to 'home'
+    const hash = window.location.hash.substring(1);
+    activateTab(hash || 'home');
+
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for your message! We will get back to you soon.');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
