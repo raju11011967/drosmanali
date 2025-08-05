@@ -164,13 +164,12 @@
   </style>
 </head>
 <body>
-
   <header>
     <div class="header-left">
       <h1>Dr. Md Osman Ali</h1>
       <p>Psychotherapist & General Physician, Himayat Nagar, Hyderabad</p>
     </div>
-    <img src="https://via.placeholder.com/80" alt="Doctor Photo" class="main-photo" />
+    <img src="path/to/doctor.jpg" alt="Dr. Md Osman Ali" class="main-photo" onerror="this.src='https://via.placeholder.com/80?text=Fallback'" />
   </header>
 
   <nav>
@@ -268,12 +267,52 @@
       this.reset();
     });
 
-    // Gallery upload + delete
+    // Gallery upload + delete with localStorage
+    function loadGalleryFromStorage() {
+      const gallery = document.getElementById('gallery-display');
+      const savedItems = JSON.parse(localStorage.getItem('galleryItems') || '[]');
+      savedItems.forEach(item => {
+        const container = document.createElement('div');
+        container.className = 'gallery-item';
+        const media = item.type === 'video' ? document.createElement('video') : document.createElement('img');
+        if (item.type === 'video') media.controls = true;
+        media.src = item.src;
+        container.appendChild(media);
+        const btn = document.createElement('button');
+        btn.textContent = 'Delete';
+        btn.className = 'delete-btn';
+        btn.onclick = () => {
+          container.remove();
+          updateStorage();
+        };
+        container.appendChild(btn);
+        gallery.appendChild(container);
+      });
+    }
+
+    function updateStorage() {
+      const gallery = document.getElementById('gallery-display');
+      const items = Array.from(gallery.children).map(container => {
+        const media = container.querySelector('img, video');
+        return { src: media.src, type: media.tagName.toLowerCase() };
+      });
+      localStorage.setItem('galleryItems', JSON.stringify(items));
+    }
+
     document.getElementById('gallery-upload').addEventListener('change', function(event) {
       const files = event.target.files;
       const gallery = document.getElementById('gallery-display');
+      const maxSize = 5 * 1024 * 1024; // 5MB
 
       Array.from(files).forEach(file => {
+        if (file.size > maxSize) {
+          alert(`File ${file.name} exceeds 5MB limit.`);
+          return;
+        }
+        if (!file.type.match('image/*|video/*')) {
+          alert(`File ${file.name} is not a valid image or video.`);
+          return;
+        }
         const reader = new FileReader();
         reader.onload = function(e) {
           const container = document.createElement('div');
@@ -293,19 +332,22 @@
           const btn = document.createElement('button');
           btn.textContent = 'Delete';
           btn.className = 'delete-btn';
-          btn.onclick = () => container.remove();
+          btn.onclick = () => {
+            container.remove();
+            updateStorage();
+          };
 
           container.appendChild(btn);
           gallery.appendChild(container);
+          updateStorage();
         };
         reader.readAsDataURL(file);
       });
 
-      // Clear input after loading
       event.target.value = '';
     });
-  </script>
 
+    window.addEventListener('load', loadGalleryFromStorage);
+  </script>
 </body>
 </html>
-
