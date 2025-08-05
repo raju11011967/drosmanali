@@ -17,11 +17,32 @@
       background-color: #005fba;
       color: white;
       padding: 20px;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
     header h1 {
       margin: 0;
+      font-size: 24px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 14px;
+    }
+
+    .header-left {
+      flex: 1;
+    }
+
+    .main-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid white;
     }
 
     nav {
@@ -57,8 +78,8 @@
     }
 
     @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     footer {
@@ -66,9 +87,6 @@
       color: white;
       text-align: center;
       padding: 15px;
-      position: relative;
-      bottom: 0;
-      width: 100%;
       margin-top: 20px;
     }
 
@@ -100,6 +118,41 @@
       background-color: #005fa3;
     }
 
+    #gallery-upload {
+      margin-bottom: 15px;
+    }
+
+    .gallery-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .gallery-item {
+      position: relative;
+      width: 160px;
+    }
+
+    .gallery-item img,
+    .gallery-item video {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .delete-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 3px 7px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
     @media screen and (max-width: 600px) {
       nav a {
         flex: 1 1 100%;
@@ -113,8 +166,11 @@
 <body>
 
   <header>
-    <h1>Dr. Md Osman Ali</h1>
-    <p>Psychotherapist & General Physician, Himayat Nagar, Hyderabad</p>
+    <div class="header-left">
+      <h1>Dr. Md Osman Ali</h1>
+      <p>Psychotherapist & General Physician, Himayat Nagar, Hyderabad</p>
+    </div>
+    <img src="https://via.placeholder.com/80" alt="Doctor Photo" class="main-photo" />
   </header>
 
   <nav>
@@ -122,6 +178,7 @@
     <a href="#about" class="tab-link">About</a>
     <a href="#services" class="tab-link">Services</a>
     <a href="#testimonials" class="tab-link">Testimonials</a>
+    <a href="#gallery" class="tab-link">Gallery</a>
     <a href="#contact" class="tab-link">Contact</a>
   </nav>
 
@@ -158,214 +215,10 @@
     <p>“Highly professional and very understanding. I’ve been visiting Dr. Osman for over 2 years and my mental health has improved drastically.” – Patient B</p>
   </section>
 
-  <section id="contact" class="tab-content">
-    <h2>Contact Us</h2>
-    <form id="contactForm">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required />
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required />
-
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
-
-      <button type="submit">Send Message</button>
-    </form>
-    <p><strong>Phone:</strong> +91-XXXXXXXXXX<br>
-       <strong>Email:</strong> drosmanali@gmail.com<br>
-       <strong>Address:</strong> Himayat Nagar, Hyderabad
-    </p>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Dr. Md Osman Ali. All rights reserved.</p>
-  </footer>
-
-  <script>
-    const links = document.querySelectorAll('.tab-link');
-    const tabs = document.querySelectorAll('.tab-content');
-
-    links.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-
-        links.forEach(l => l.classList.remove('active'));
-        tabs.forEach(t => t.classList.remove('active'));
-
-        this.classList.add('active');
-        const target = this.getAttribute('href').substring(1);
-        document.getElementById(target).classList.add('active');
-      });
-    });
-
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Thank you for contacting us! We will get back to you soon.');
-      this.reset();
-    });
-  </script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dr. Md Osman Ali - Psychotherapist</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f7fc;
-      color: #333;
-    }
-
-    header {
-      background-color: #005fba;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-    }
-
-    nav {
-      background-color: #0074d9;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    nav a {
-      padding: 15px 20px;
-      color: white;
-      text-decoration: none;
-      border-right: 1px solid #005fa3;
-    }
-
-    nav a:last-child {
-      border-right: none;
-    }
-
-    nav a:hover, nav a.active {
-      background-color: #004a94;
-    }
-
-    section.tab-content {
-      display: none;
-      padding: 20px;
-    }
-
-    section.active {
-      display: block;
-      animation: fadeIn 0.3s ease-in;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-
-    footer {
-      background-color: #005fba;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      position: relative;
-      bottom: 0;
-      width: 100%;
-      margin-top: 20px;
-    }
-
-    form label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-
-    form input, form textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    form button {
-      margin-top: 15px;
-      background-color: #0074d9;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    form button:hover {
-      background-color: #005fa3;
-    }
-
-    @media screen and (max-width: 600px) {
-      nav a {
-        flex: 1 1 100%;
-        text-align: center;
-        border-right: none;
-        border-bottom: 1px solid #005fa3;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <h1>Dr. Md Osman Ali</h1>
-    <p>Psychotherapist & General Physician, Himayat Nagar, Hyderabad</p>
-  </header>
-
-  <nav>
-    <a href="#home" class="tab-link active">Home</a>
-    <a href="#about" class="tab-link">About</a>
-    <a href="#services" class="tab-link">Services</a>
-    <a href="#testimonials" class="tab-link">Testimonials</a>
-    <a href="#contact" class="tab-link">Contact</a>
-  </nav>
-
-  <section id="home" class="tab-content active">
-    <h2>Welcome</h2>
-    <p>Welcome to the practice of Dr. Md Osman Ali, a seasoned psychotherapist and general physician with over 14 years of experience. We are committed to offering compassionate, confidential, and professional care to all our patients.</p>
-  </section>
-
-  <section id="about" class="tab-content">
-    <h2>About Dr. Osman Ali</h2>
-    <p>Dr. Md Osman Ali is a verified Psychotherapist and General Physician with over 14 years of experience treating patients with a range of psychological and physical conditions. His empathetic approach and dedication to patient care make him a trusted professional in the medical community.</p>
-    <p><strong>Qualifications:</strong><br>
-       MBBS, DPM (Psychiatry)<br>
-       Practicing since: 2010<br>
-       Clinic Location: Himayat Nagar, Hyderabad
-    </p>
-  </section>
-
-  <section id="services" class="tab-content">
-    <h2>Our Services</h2>
-    <ul>
-      <li>Psychiatric Consultation</li>
-      <li>Stress and Anxiety Management</li>
-      <li>Depression Therapy</li>
-      <li>Sleep Disorders Treatment</li>
-      <li>Medication Management</li>
-      <li>General Health Consultation</li>
-    </ul>
-  </section>
-
-  <section id="testimonials" class="tab-content">
-    <h2>Patient Testimonials</h2>
-    <p>“Dr. Osman Ali helped me through the most difficult phase of my life with patience and kindness. I’m forever grateful.” – Patient A</p>
-    <p>“Highly professional and very understanding. I’ve been visiting Dr. Osman for over 2 years and my mental health has improved drastically.” – Patient B</p>
+  <section id="gallery" class="tab-content">
+    <h2>Gallery</h2>
+    <input type="file" id="gallery-upload" multiple accept="image/*,video/*" />
+    <div class="gallery-grid" id="gallery-display"></div>
   </section>
 
   <section id="contact" class="tab-content">
@@ -393,26 +246,63 @@
   </footer>
 
   <script>
+    // Tab switching
     const links = document.querySelectorAll('.tab-link');
     const tabs = document.querySelectorAll('.tab-content');
 
     links.forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
-
         links.forEach(l => l.classList.remove('active'));
         tabs.forEach(t => t.classList.remove('active'));
-
         this.classList.add('active');
         const target = this.getAttribute('href').substring(1);
         document.getElementById(target).classList.add('active');
       });
     });
 
+    // Contact form
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       alert('Thank you for contacting us! We will get back to you soon.');
       this.reset();
+    });
+
+    // Gallery upload + delete
+    document.getElementById('gallery-upload').addEventListener('change', function(event) {
+      const files = event.target.files;
+      const gallery = document.getElementById('gallery-display');
+
+      Array.from(files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const container = document.createElement('div');
+          container.className = 'gallery-item';
+
+          let media;
+          if (file.type.startsWith('video')) {
+            media = document.createElement('video');
+            media.controls = true;
+          } else {
+            media = document.createElement('img');
+          }
+
+          media.src = e.target.result;
+          container.appendChild(media);
+
+          const btn = document.createElement('button');
+          btn.textContent = 'Delete';
+          btn.className = 'delete-btn';
+          btn.onclick = () => container.remove();
+
+          container.appendChild(btn);
+          gallery.appendChild(container);
+        };
+        reader.readAsDataURL(file);
+      });
+
+      // Clear input after loading
+      event.target.value = '';
     });
   </script>
 
