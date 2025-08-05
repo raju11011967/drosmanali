@@ -12,7 +12,6 @@
       background-color: #f4f7fc;
       color: #333;
     }
-
     header {
       background-color: #005fba;
       color: white;
@@ -22,21 +21,17 @@
       align-items: center;
       flex-wrap: wrap;
     }
-
     header h1 {
       margin: 0;
       font-size: 24px;
     }
-
     header p {
       margin: 5px 0 0;
       font-size: 14px;
     }
-
     .header-left {
       flex: 1;
     }
-
     .main-photo {
       width: 80px;
       height: 80px;
@@ -44,44 +39,41 @@
       object-fit: cover;
       border: 2px solid white;
     }
-
+    #photo-upload {
+      margin-top: 10px;
+      width: 100%;
+      max-width: 200px;
+    }
     nav {
       background-color: #0074d9;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
     }
-
     nav a {
       padding: 15px 20px;
       color: white;
       text-decoration: none;
       border-right: 1px solid #005fa3;
     }
-
     nav a:last-child {
       border-right: none;
     }
-
     nav a:hover, nav a.active {
       background-color: #004a94;
     }
-
     section.tab-content {
       display: none;
       padding: 20px;
     }
-
     section.active {
       display: block;
       animation: fadeIn 0.3s ease-in;
     }
-
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-
     footer {
       background-color: #005fba;
       color: white;
@@ -89,13 +81,11 @@
       padding: 15px;
       margin-top: 20px;
     }
-
     form label {
       display: block;
       margin-top: 15px;
       font-weight: bold;
     }
-
     form input, form textarea {
       width: 100%;
       padding: 10px;
@@ -103,7 +93,6 @@
       border: 1px solid #ccc;
       border-radius: 4px;
     }
-
     form button {
       margin-top: 15px;
       background-color: #0074d9;
@@ -113,33 +102,27 @@
       border-radius: 4px;
       cursor: pointer;
     }
-
     form button:hover {
       background-color: #005fa3;
     }
-
     #gallery-upload {
       margin-bottom: 15px;
     }
-
     .gallery-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 15px;
     }
-
     .gallery-item {
       position: relative;
       width: 160px;
     }
-
     .gallery-item img,
     .gallery-item video {
       width: 100%;
       border-radius: 8px;
       border: 1px solid #ccc;
     }
-
     .delete-btn {
       position: absolute;
       top: 5px;
@@ -152,7 +135,6 @@
       cursor: pointer;
       font-size: 12px;
     }
-
     @media screen and (max-width: 600px) {
       nav a {
         flex: 1 1 100%;
@@ -169,9 +151,11 @@
       <h1>Dr. Md Osman Ali</h1>
       <p>Psychotherapist & General Physician, Himayat Nagar, Hyderabad</p>
     </div>
-    <img src="path/to/doctor.jpg" alt="Dr. Md Osman Ali" class="main-photo" onerror="this.src='https://via.placeholder.com/80?text=Fallback'" />
+    <div>
+      <img id="doctor-photo" src="path/to/doctor.jpg" alt="Dr. Md Osman Ali" class="main-photo" onerror="this.src='https://via.placeholder.com/80?text=Fallback'" />
+      <input type="file" id="photo-upload" accept="image/*" />
+    </div>
   </header>
-
   <nav>
     <a href="#home" class="tab-link active">Home</a>
     <a href="#about" class="tab-link">About</a>
@@ -180,12 +164,10 @@
     <a href="#gallery" class="tab-link">Gallery</a>
     <a href="#contact" class="tab-link">Contact</a>
   </nav>
-
   <section id="home" class="tab-content active">
     <h2>Welcome</h2>
     <p>Welcome to the practice of Dr. Md Osman Ali, a seasoned psychotherapist and general physician with over 14 years of experience. We are committed to offering compassionate, confidential, and professional care to all our patients.</p>
   </section>
-
   <section id="about" class="tab-content">
     <h2>About Dr. Osman Ali</h2>
     <p>Dr. Md Osman Ali is a verified Psychotherapist and General Physician with over 14 years of experience treating patients with a range of psychological and physical conditions. His empathetic approach and dedication to patient care make him a trusted professional in the medical community.</p>
@@ -195,7 +177,6 @@
        Clinic Location: Himayat Nagar, Hyderabad
     </p>
   </section>
-
   <section id="services" class="tab-content">
     <h2>Our Services</h2>
     <ul>
@@ -207,31 +188,25 @@
       <li>General Health Consultation</li>
     </ul>
   </section>
-
   <section id="testimonials" class="tab-content">
     <h2>Patient Testimonials</h2>
     <p>“Dr. Osman Ali helped me through the most difficult phase of my life with patience and kindness. I’m forever grateful.” – Patient A</p>
     <p>“Highly professional and very understanding. I’ve been visiting Dr. Osman for over 2 years and my mental health has improved drastically.” – Patient B</p>
   </section>
-
   <section id="gallery" class="tab-content">
     <h2>Gallery</h2>
     <input type="file" id="gallery-upload" multiple accept="image/*,video/*" />
     <div class="gallery-grid" id="gallery-display"></div>
   </section>
-
   <section id="contact" class="tab-content">
     <h2>Contact Us</h2>
     <form id="contactForm">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required />
-
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" required />
-
       <label for="message">Message:</label>
       <textarea id="message" name="message" rows="5" required></textarea>
-
       <button type="submit">Send Message</button>
     </form>
     <p><strong>Phone:</strong> +91-XXXXXXXXXX<br>
@@ -239,16 +214,13 @@
        <strong>Address:</strong> Himayat Nagar, Hyderabad
     </p>
   </section>
-
   <footer>
     <p>&copy; 2025 Dr. Md Osman Ali. All rights reserved.</p>
   </footer>
-
   <script>
     // Tab switching
     const links = document.querySelectorAll('.tab-link');
     const tabs = document.querySelectorAll('.tab-content');
-
     links.forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
@@ -259,14 +231,43 @@
         document.getElementById(target).classList.add('active');
       });
     });
-
     // Contact form
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       alert('Thank you for contacting us! We will get back to you soon.');
       this.reset();
     });
-
+    // Doctor photo upload
+    function loadDoctorPhoto() {
+      const savedPhoto = localStorage.getItem('doctorPhoto');
+      const photoElement = document.getElementById('doctor-photo');
+      if (savedPhoto) {
+        photoElement.src = savedPhoto;
+      }
+    }
+    document.getElementById('photo-upload').addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      const maxSize = 5 * 1024 * 1024; // 5MB
+      if (file) {
+        if (!file.type.match('image/*')) {
+          alert('Please upload a valid image file.');
+          return;
+        }
+        if (file.size > maxSize) {
+          alert('Image exceeds 5MB limit.');
+          return;
+        }
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const photoElement = document.getElementById('doctor-photo');
+          photoElement.src = e.target.result;
+          localStorage.setItem('doctorPhoto', e.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
+      event.target.value = '';
+    });
+    window.addEventListener('load', loadDoctorPhoto);
     // Gallery upload + delete with localStorage
     function loadGalleryFromStorage() {
       const gallery = document.getElementById('gallery-display');
@@ -289,7 +290,6 @@
         gallery.appendChild(container);
       });
     }
-
     function updateStorage() {
       const gallery = document.getElementById('gallery-display');
       const items = Array.from(gallery.children).map(container => {
@@ -298,12 +298,10 @@
       });
       localStorage.setItem('galleryItems', JSON.stringify(items));
     }
-
     document.getElementById('gallery-upload').addEventListener('change', function(event) {
       const files = event.target.files;
       const gallery = document.getElementById('gallery-display');
       const maxSize = 5 * 1024 * 1024; // 5MB
-
       Array.from(files).forEach(file => {
         if (file.size > maxSize) {
           alert(`File ${file.name} exceeds 5MB limit.`);
@@ -317,7 +315,6 @@
         reader.onload = function(e) {
           const container = document.createElement('div');
           container.className = 'gallery-item';
-
           let media;
           if (file.type.startsWith('video')) {
             media = document.createElement('video');
@@ -325,10 +322,8 @@
           } else {
             media = document.createElement('img');
           }
-
           media.src = e.target.result;
           container.appendChild(media);
-
           const btn = document.createElement('button');
           btn.textContent = 'Delete';
           btn.className = 'delete-btn';
@@ -336,17 +331,14 @@
             container.remove();
             updateStorage();
           };
-
           container.appendChild(btn);
           gallery.appendChild(container);
           updateStorage();
         };
         reader.readAsDataURL(file);
       });
-
       event.target.value = '';
     });
-
     window.addEventListener('load', loadGalleryFromStorage);
   </script>
 </body>
