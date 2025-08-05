@@ -637,7 +637,7 @@
       <h2 data-en="Our Services" data-te="మా సేవలు" data-ur="ہماری خدمات">Our Services</h2>
       <ul class="services-list">
         <li><a href="https://www.psychologytoday.com/us/therapy-types/psychiatric-medication-management" target="_blank" rel="noopener" data-en="Psychiatric Consultation" data-te="మానసిక వైద్య సలహా" data-ur="نفسیاتی مشاورت">Psychiatric Consultation</a></li>
-        <li><a href="https://www.nimh.nih.gov/health/topics/anxiety-disorders" target="_blank" rel="noopener" data-en="Stress and Anxiety Management" data-te="ఒత్తిడి మరియు ఆందోళన నిర్వహణ" data-ur="تناؤ اور اضطراب کا انتظام">Stress and Anxiety Management</a></li>
+        <li><a href="https://www.nimh.nih.gov/health/topics/anxiety-disorders" target="_blank" rel="noopener" data-en="Stress and Anxiety Management" data-te="ఒత్తిడి మరియు ఆందోళన నిర్వహణ" data-ur="تن先にتناؤ اور اضطراب کا انتظام">Stress and Anxiety Management</a></li>
         <li><a href="https://www.nimh.nih.gov/health/topics/depression" target="_blank" rel="noopener" data-en="Depression Therapy" data-te="డిప్రెషన్ థెరపీ" data-ur="ڈپریشن کی تھراپی">Depression Therapy</a></li>
         <li><a href="https://www.sleepfoundation.org/sleep-disorders" target="_blank" rel="noopener" data-en="Sleep Disorders Treatment" data-te="నిద్రలేమి చికిత్స" data-ur="نیند کی خرابیوں کا علاج">Sleep Disorders Treatment</a></li>
         <li><a href="https://www.psychiatry.org/patients-families/what-is-psychiatry" target="_blank" rel="noopener" data-en="Medication Management" data-te="మందుల నిర్వహణ" data-ur="دوائیوں کا انتظام">Medication Management</a></li>
@@ -735,49 +735,118 @@
     // Initialize default language
     changeLanguage('english');
 
-    // Photo upload functionality
+    // Load saved doctor photo from localStorage
+    function loadDoctorPhoto() {
+      const savedPhoto = localStorage.getItem('doctorPhoto');
+      if (savedPhoto) {
+        document.getElementById('doctor-photo').src = savedPhoto;
+      }
+    }
+
+    // Doctor photo upload functionality
     document.getElementById('photo-upload').addEventListener('change', function(e) {
       const file = e.target.files[0];
       if (file && file.type.startsWith('image/')) {
+        if (file.size > 5 * 1024 * 1024) {
+          alert('File size exceeds 5MB limit.');
+          return;
+        }
         const reader = new FileReader();
         reader.onload = function(e) {
-          document.getElementById('doctor-photo').src = e.target.result;
+          const photoData = e.target.result;
+          document.getElementById('doctor-photo').src = photoData;
+          localStorage.setItem('doctorPhoto', photoData);
         };
         reader.readAsDataURL(file);
       }
     });
 
+    // Load saved gallery items from localStorage
+    function loadGallery() {
+      const galleryItems = JSON.parse(localStorage.getItem('galleryItems') || '[]');
+      const galleryGrid = document.getElementById('gallery-grid');
+      galleryItems.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.classList.add('gallery-item');
+        if (item.type.startsWith('image/')) {
+          const img = document.createElement('img');
+          img.src = item.data;
+          img.alt = item.alt;
+          div.appendChild(img);
+        } else if (item.type.startsWith('video/')) {
+          const video = document.createElement('video');
+          video.src = item.data;
+          video.controls = true;
+          video.alt = item.alt;
+          div.appendChild(video);
+        }
+        const deleteBtn = document.createElement('button');
+        deleteBtn.classList.add('delete-btn');
+        deleteBtn.textContent = '✕';
+        deleteBtn.setAttribute('aria-label', 'Delete media');
+        deleteBtn.addEventListener('click', function() {
+          div.remove();
+          const updatedItems = JSON.parse(localStorage.getItem('galleryItems') || '[]');
+          updatedItems.splice(index, 1);
+          localStorage.setItem('galleryItems', JSON.stringify(updatedItems));
+          // Reindex remaining items to maintain correct deletion
+          loadGallery(); // Reload gallery to update indices
+        });
+        div.appendChild(deleteBtn);
+        galleryGrid.appendChild(div);
+      });
+    }
+
     // Gallery upload functionality
     document.getElementById('gallery-upload').addEventListener('change', function(e) {
       const files = e.target.files;
       const galleryGrid = document.getElementById('gallery-grid');
+      const galleryItems = JSON.parse(localStorage.getItem('galleryItems') || '[]');
+      
       Array.from(files).forEach(file => {
         if (file.type.startsWith('image/') || file.type.startsWith('video/')) {
+          if (file.size > 5 * 1024 * 1024) {
+            alert('File size exceeds 5MB limit.');
+            return;
+          }
           const reader = new FileReader();
           reader.onload = function(e) {
+            const mediaData = e.target.result;
             const div = document.createElement('div');
             div.classList.add('gallery-item');
+            let mediaElement;
             if (file.type.startsWith('image/')) {
-              const img = document.createElement('img');
-              img.src = e.target.result;
-              img.alt = "Gallery image";
-              div.appendChild(img);
+              mediaElement = document.createElement('img');
+              mediaElement.src = mediaData;
+              mediaElement.alt = 'Gallery image';
             } else {
-              const video = document.createElement('video');
-              video.src = e.target.result;
-              video.controls = true;
-              video.alt = "Gallery video";
-              div.appendChild(video);
+              mediaElement = document.createElement('video');
+              mediaElement.src = mediaData;
+              mediaElement.controls = true;
+              mediaElement.alt = 'Gallery video';
             }
+            div.appendChild(mediaElement);
             const deleteBtn = document.createElement('button');
             deleteBtn.classList.add('delete-btn');
             deleteBtn.textContent = '✕';
             deleteBtn.setAttribute('aria-label', 'Delete media');
             deleteBtn.addEventListener('click', function() {
               div.remove();
+              const updatedItems = JSON.parse(localStorage.getItem('galleryItems') || '[]');
+              const index = updatedItems.findIndex(item => item.data === mediaData);
+              if (index !== -1) {
+                updatedItems.splice(index, 1);
+                localStorage.setItem('galleryItems', JSON.stringify(updatedItems));
+              }
             });
             div.appendChild(deleteBtn);
             galleryGrid.appendChild(div);
+            galleryItems.push({
+              data: mediaData,
+              type: file.type,
+              alt: file.type.startsWith('image/') ? 'Gallery image' : 'Gallery video'
+            });
+            localStorage.setItem('galleryItems', JSON.stringify(galleryItems));
           };
           reader.readAsDataURL(file);
         }
@@ -838,6 +907,10 @@
       // Update language to ensure new testimonial displays correctly
       changeLanguage(currentLang);
     });
+
+    // Initialize saved media on page load
+    loadDoctorPhoto();
+    loadGallery();
   </script>
 </body>
 </html>
