@@ -1,656 +1,633 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Open Graph Meta Tags for WhatsApp sharing -->
+  <meta property="og:title" content="Dr. Md Osman Ali - Psychotherapist">
+  <meta property="og:description" content="Professional Psychotherapist & General Physician with 14+ years experience in Himayat Nagar, Hyderabad">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://via.placeholder.com/400x200/005fba/ffffff?text=Dr.+Osman+Ali">
+  <meta property="og:url" content="#">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dr. Md Osman Ali - Psychotherapist">
+  <meta name="twitter:description" content="Professional mental health care in Hyderabad">
+  
   <title>Dr. Md Osman Ali - Psychotherapist</title>
+  
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
+    * {
       margin: 0;
       padding: 0;
-      background-color: #f4f7fc;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
       color: #333;
+      background-color: #f8f9fa;
+      overflow-x: hidden;
     }
-    header {
-      background-color: #005fba;
-      color: white;
-      padding: 20px;
-      padding-top: 50px;
+    
+    /* Language Toggle */
+    .language-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+      gap: 5px;
+      background: rgba(0, 95, 186, 0.9);
+      padding: 5px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .lang-btn {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 6px 10px;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      min-width: 40px;
+      text-align: center;
+    }
+    
+    .lang-btn:hover, .lang-btn.active {
+      background: white;
+      color: #005fba;
+      border-color: white;
+    }
+    
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #005fba 0%, #0074d9 100%);
+      color: white;
+      padding: 50px 15px 20px;
+      text-align: center;
       position: relative;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
-    header h1 {
-      margin: 0;
-      font-size: 24px;
+    
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
     }
-    header p {
-      margin: 5px 0 0;
-      font-size: 14px;
-    }
-    .header-left {
-      flex: 1;
-    }
+    
     .main-photo {
       width: 80px;
       height: 80px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid white;
+      border: 3px solid white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
+    
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 10px 0 5px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    header p {
+      font-size: 0.9rem;
+      opacity: 0.95;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
     #photo-upload {
       margin-top: 10px;
-      width: 100%;
+      font-size: 0.8rem;
       max-width: 200px;
-    }
-    .language-toggle {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      display: flex;
-      gap: 10px;
-      z-index: 1000;
-      flex-wrap: wrap;
-    }
-    .lang-btn {
-      background-color: rgba(255,255,255,0.2);
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.1);
       color: white;
-      border: 1px solid white;
-      padding: 5px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 12px;
-      transition: background-color 0.3s;
     }
-    .lang-btn:hover {
-      background-color: rgba(255,255,255,0.3);
-    }
-    .lang-btn.active {
-      background-color: white;
-      color: #005fba;
-    }
+    
+    /* Navigation */
     nav {
-      background-color: #0074d9;
-      display: flex;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      overflow-x: auto;
+      background: #0074d9;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    
+    .nav-container::-webkit-scrollbar {
+      display: none;
+    }
+    
     nav a {
-      padding: 15px 25px;
+      display: block;
+      padding: 15px 20px;
       color: white;
       text-decoration: none;
-      border-right: 1px solid #005fa3;
       white-space: nowrap;
-      flex-shrink: 0;
+      font-weight: 500;
+      font-size: 0.9rem;
+      border-right: 1px solid rgba(255,255,255,0.1);
+      transition: background-color 0.3s ease;
+      min-width: 100px;
+      text-align: center;
     }
+    
     nav a:last-child {
       border-right: none;
     }
+    
     nav a:hover, nav a.active {
-      background-color: #004a94;
+      background: rgba(0,0,0,0.2);
     }
+    
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
     section.tab-content {
       display: none;
-      padding: 20px;
+      padding: 30px 0;
+      min-height: 400px;
     }
+    
     section.active {
       display: block;
       animation: fadeIn 0.3s ease-in;
     }
+    
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    footer {
-      background-color: #005fba;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 20px;
+    
+    h2 {
+      color: #005fba;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      font-weight: 600;
     }
-    form label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-    form input, form textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-    form button {
-      margin-top: 15px;
-      background-color: #0074d9;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    form button:hover {
-      background-color: #005fa3;
-    }
-    #gallery-upload {
+    
+    p {
       margin-bottom: 15px;
+      line-height: 1.7;
+      color: #555;
     }
-    .gallery-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-    .gallery-item {
-      position: relative;
-      width: 160px;
-    }
-    .gallery-item img,
-    .gallery-item video {
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    .delete-btn {
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      background: rgba(0, 0, 0, 0.7);
-      color: white;
-      border: none;
-      border-radius: 4px;
-      padding: 3px 7px;
-      cursor: pointer;
-      font-size: 12px;
-    }
-
-    /* Services styling */
+    
+    /* Services */
     .services-list {
       list-style: none;
-      padding: 0;
+      display: grid;
+      gap: 15px;
     }
+    
     .services-list li {
-      margin: 15px 0;
-      padding: 15px;
       background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       border-left: 4px solid #0074d9;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+    
+    .services-list li:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    
     .services-list a {
       color: #0074d9;
       text-decoration: none;
-      font-weight: bold;
-      display: block;
+      font-weight: 600;
+      font-size: 1rem;
     }
+    
     .services-list a:hover {
-      color: #005fa3;
-      text-decoration: underline;
+      color: #005fba;
     }
-
-    /* Testimonials styling */
+    
+    /* Testimonials */
     .testimonial-item {
       background: white;
-      padding: 20px;
-      margin: 15px 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 25px;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       border-left: 4px solid #28a745;
+      position: relative;
     }
-    .testimonial-author {
+    
+    .testimonial-item::before {
+      content: '"';
+      font-size: 3rem;
+      color: #28a745;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      opacity: 0.3;
+    }
+    
+    .testimonial-item p {
       font-style: italic;
-      color: #666;
-      margin-top: 10px;
+      color: #444;
+      margin-left: 30px;
+      margin-bottom: 10px;
     }
+    
+    .testimonial-author {
+      text-align: right;
+      color: #666;
+      font-weight: 500;
+      margin-top: 15px;
+    }
+    
     .testimonial-form {
       background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      margin: 20px 0;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin: 30px 0;
     }
+    
     .testimonial-form h3 {
       color: #0074d9;
-      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
     }
-
+    
+    /* Forms */
+    form label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    form input, form textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e1e5e9;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      background: white;
+    }
+    
+    form input:focus, form textarea:focus {
+      outline: none;
+      border-color: #0074d9;
+      box-shadow: 0 0 0 3px rgba(0,116,217,0.1);
+    }
+    
+    form button {
+      background: linear-gradient(135deg, #0074d9 0%, #005fba 100%);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    form button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(0,116,217,0.3);
+    }
+    
+    form button:active {
+      transform: translateY(0);
+    }
+    
+    /* Gallery */
+    #gallery-upload {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 2px dashed #0074d9;
+      border-radius: 8px;
+      background: rgba(0,116,217,0.05);
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.05);
+    }
+    
+    .gallery-item img, .gallery-item video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .delete-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(220,53,69,0.9);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease;
+    }
+    
+    .delete-btn:hover {
+      background: #dc3545;
+    }
+    
+    /* Contact */
+    .contact-info {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-top: 30px;
+    }
+    
+    .contact-info p {
+      margin: 10px 0;
+      font-size: 1rem;
+    }
+    
+    .contact-info strong {
+      color: #0074d9;
+    }
+    
+    /* Footer */
+    footer {
+      background: #005fba;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+    
     /* Language-specific styles */
-    .urdu, .telugu {
-      font-family: 'Arial Unicode MS', 'Noto Sans', sans-serif;
-    }
     .urdu {
       direction: rtl;
       text-align: right;
+      font-family: 'Arial Unicode MS', 'Tahoma', sans-serif;
     }
+    
     .telugu {
-      direction: ltr;
-      text-align: left;
+      font-family: 'Noto Sans Telugu', 'Arial Unicode MS', sans-serif;
     }
     
-    /* Mobile touch improvements */
-    * {
-      -webkit-tap-highlight-color: transparent;
-      -webkit-touch-callout: none;
-    }
-    
-    button, a, input[type="file"] {
-      -webkit-tap-highlight-color: rgba(0,0,0,0.1);
-    }
-
+    /* Mobile Optimizations */
     @media screen and (max-width: 768px) {
+      html {
+        font-size: 14px;
+      }
+      
+      .language-toggle {
+        top: 5px;
+        right: 5px;
+        padding: 3px;
+        border-radius: 15px;
+      }
+      
+      .lang-btn {
+        padding: 4px 8px;
+        font-size: 10px;
+        min-width: 35px;
+      }
+      
       header {
-        padding: 15px;
-        padding-top: 70px;
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
+        padding: 40px 10px 15px;
       }
-      .header-left {
-        order: 2;
-        flex: none;
+      
+      header h1 {
+        font-size: 1.4rem;
       }
-      .header-left h1 {
-        font-size: 20px;
-        margin-bottom: 5px;
+      
+      header p {
+        font-size: 0.8rem;
       }
-      .header-left p {
-        font-size: 12px;
-      }
+      
       .main-photo {
         width: 60px;
         height: 60px;
-        order: 1;
       }
-      #photo-upload {
-        max-width: 150px;
-        font-size: 12px;
+      
+      nav a {
+        padding: 12px 15px;
+        font-size: 0.8rem;
+        min-width: 80px;
       }
-      nav {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        justify-content: flex-start;
+      
+      main {
         padding: 0 10px;
       }
-      nav a {
-        min-width: 100px;
-        padding: 12px 15px;
-        text-align: center;
-        border-right: 1px solid #005fa3;
-        border-bottom: none;
-        font-size: 14px;
-      }
-      .language-toggle {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        left: auto;
-        justify-content: flex-end;
-        width: auto;
-        gap: 5px;
-      }
-      .lang-btn {
-        flex: none;
-        max-width: none;
-        min-width: 50px;
-        padding: 4px 8px;
-        font-size: 11px;
-      }
+      
       section.tab-content {
-        padding: 15px;
+        padding: 20px 0;
       }
+      
+      h2 {
+        font-size: 1.3rem;
+      }
+      
       .services-list li {
-        padding: 12px;
-        margin: 10px 0;
-      }
-      .testimonial-item, .testimonial-form {
         padding: 15px;
-        margin: 10px 0;
       }
-      .gallery-item {
-        width: 140px;
+      
+      .testimonial-item, .testimonial-form {
+        padding: 20px;
+        margin: 15px 0;
       }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+      }
+      
       form input, form textarea {
         font-size: 16px; /* Prevents zoom on iOS */
+        padding: 10px 12px;
       }
-      footer {
-        padding: 12px;
-        font-size: 12px;
+      
+      form button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1rem;
       }
     }
-
+    
     @media screen and (max-width: 480px) {
-      header {
-        padding: 10px;
-        padding-top: 60px;
+      .language-toggle {
+        gap: 3px;
       }
-      .header-left h1 {
-        font-size: 18px;
-      }
-      .header-left p {
-        font-size: 11px;
-      }
-      nav a {
-        min-width: 90px;
-        padding: 10px 12px;
-        font-size: 13px;
-      }
+      
       .lang-btn {
-        min-width: 45px;
         padding: 3px 6px;
-        font-size: 10px;
+        font-size: 9px;
+        min-width: 30px;
       }
-      section.tab-content {
-        padding: 12px;
+      
+      header {
+        padding: 35px 8px 12px;
       }
-      .gallery-item {
-        width: 120px;
+      
+      header h1 {
+        font-size: 1.2rem;
+      }
+      
+      .main-photo {
+        width: 50px;
+        height: 50px;
+      }
+      
+      nav a {
+        padding: 10px 12px;
+        min-width: 70px;
+        font-size: 0.75rem;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      }
+    }
+    
+    /* WhatsApp specific optimizations */
+    @media screen and (max-width: 414px) {
+      .nav-container {
+        justify-content: flex-start;
+      }
+      
+      nav a {
+        flex-shrink: 0;
       }
     }
   </style>
 </head>
 <body>
   <div class="language-toggle">
-    <button class="lang-btn active" onclick="changeLanguage('english')">English</button>
-    <button class="lang-btn" onclick="changeLanguage('telugu')">తెలుగు</button>
-    <button class="lang-btn" onclick="changeLanguage('urdu')">اردو</button>
+    <button class="lang-btn active" onclick="changeLanguage('english')">EN</button>
+    <button class="lang-btn" onclick="changeLanguage('telugu')">తె</button>
+    <button class="lang-btn" onclick="changeLanguage('urdu')">اُر</button>
   </div>
 
   <header>
-    <div class="header-left">
-      <h1 data-en="Dr. Md Osman Ali" data-te="డా. మహమ్మద్ ఉస్మాన్ అలీ" data-ur="ڈاکٹر محمد عثمان علی">Dr. Md Osman Ali</h1>
-      <p data-en="Psychotherapist & General Physician, Himayat Nagar, Hyderabad" data-te="మానసిక వైద్యుడు మరియు సాధారణ వైద్యుడు, హిమాయత్ నగర్, హైదరాబాద్" data-ur="نفسیاتی معالج اور عام ڈاکٹر، حمایت نگر، حیدرآباد">Psychotherapist & General Physician, Himayat Nagar, Hyderabad</p>
-    </div>
-    <div>
-      <img id="doctor-photo" src="https://via.placeholder.com/80?text=Doctor" alt="Dr. Md Osman Ali" class="main-photo" />
-      <input type="file" id="photo-upload" accept="image/*" />
+    <div class="header-content">
+      <img id="doctor-photo" src="https://via.placeholder.com/80/005fba/ffffff?text=Dr" alt="Dr. Md Osman Ali" class="main-photo">
+      <div>
+        <h1 data-en="Dr. Md Osman Ali" data-te="డా. మహమ్మద్ ఉస్మాన్ అలీ" data-ur="ڈاکٹر محمد عثمان علی">Dr. Md Osman Ali</h1>
+        <p data-en="Psychotherapist & General Physician, Himayat Nagar, Hyderabad" data-te="మానసిక వైద్యుడు మరియు సాధారణ వైద్యుడు, హిమాయత్ నగర్, హైదరాబాద్" data-ur="نفسیاتی معالج اور عام ڈاکٹر، حمایت نگر، حیدرآباد">Psychotherapist & General Physician, Himayat Nagar, Hyderabad</p>
+      </div>
+      <input type="file" id="photo-upload" accept="image/*">
     </div>
   </header>
+
   <nav>
-    <a href="#home" class="tab-link active" data-en="Home" data-te="హోమ్" data-ur="ہوم">Home</a>
-    <a href="#about" class="tab-link" data-en="About" data-te="గురించి" data-ur="تعارف">About</a>
-    <a href="#services" class="tab-link" data-en="Services" data-te="సేవలు" data-ur="خدمات">Services</a>
-    <a href="#testimonials" class="tab-link" data-en="Testimonials" data-te="సాక్ష్యాలు" data-ur="گواہیاں">Testimonials</a>
-    <a href="#gallery" class="tab-link" data-en="Gallery" data-te="గ్యాలరీ" data-ur="گیلری">Gallery</a>
-    <a href="#contact" class="tab-link" data-en="Contact" data-te="సంప్రదింపు" data-ur="رابطہ">Contact</a>
+    <div class="nav-container">
+      <a href="#home" class="tab-link active" data-en="Home" data-te="హోమ్" data-ur="ہوم">Home</a>
+      <a href="#about" class="tab-link" data-en="About" data-te="గురించి" data-ur="تعارف">About</a>
+      <a href="#services" class="tab-link" data-en="Services" data-te="సేవలు" data-ur="خدمات">Services</a>
+      <a href="#testimonials" class="tab-link" data-en="Testimonials" data-te="సాక్ష్యాలు" data-ur="گواہیاں">Testimonials</a>
+      <a href="#gallery" class="tab-link" data-en="Gallery" data-te="గ్యాలరీ" data-ur="گیلری">Gallery</a>
+      <a href="#contact" class="tab-link" data-en="Contact" data-te="సంప్రదింపు" data-ur="رابطہ">Contact</a>
+    </div>
   </nav>
 
-  <section id="home" class="tab-content active">
-    <h2 data-en="Welcome" data-te="స్వాగతం" data-ur="خوش آمدید">Welcome</h2>
-    <p data-en="Welcome to the practice of Dr. Md Osman Ali, a seasoned psychotherapist and general physician with over 14 years of experience. We are committed to offering compassionate, confidential, and professional care to all our patients." data-te="14 సంవత్సరాలకు మించిన అనుభవం కలిగిన అనుభవజ్ఞుడైన మానసిక వైద్యుడు మరియు సాధారణ వైద్యుడు డా. మహమ్మద్ ఉస్మాన్ అలీ యొక్క అభ్యాసానికి స్వాగతం. మేము మా అందరు రోగులకు దయగల, రహస్య మరియు వృత్తిపరమైన సంరక్షణను అందించడానికి కట్టుబడి ఉన్నాము." data-ur="ڈاکٹر محمد عثمان علی کے کلینک میں خوش آمدید، جو 14 سال سے زیادہ کے تجربے کے ساتھ ایک تجربہ کار نفسیاتی معالج اور عام ڈاکٹر ہیں۔ ہم اپنے تمام مریضوں کو مہربان، خفیہ اور پیشہ ورانہ نگہداشت فراہم کرنے کے لیے پرعزم ہیں۔">Welcome to the practice of Dr. Md Osman Ali, a seasoned psychotherapist and general physician with over 14 years of experience. We are committed to offering compassionate, confidential, and professional care to all our patients.</p>
-  </section>
+  <main>
+    <section id="home" class="tab-content active">
+      <h2 data-en="Welcome" data-te="స్వాగతం" data-ur="خوش آمدید">Welcome</h2>
+      <p data-en="Welcome to the practice of Dr. Md Osman Ali, a seasoned psychotherapist and general physician with over 14 years of experience. We are committed to offering compassionate, confidential, and professional care to all our patients." data-te="14 సంవత్సరాలకు మించిన అనుభవం కలిగిన అనుభవజ్ఞుడైన మానసిక వైద్యుడు మరియు సాధారణ వైద్యుడు డా. మహమ్మద్ ఉస్మాన్ అలీ యొక్క అభ్యాసానికి స్వాగతం. మేము మా అందరు రోగులకు దయగల, రహస్య మరియు వృత్తిపరమైన సంరక్షణను అందించడానికి కట్టుబడి ఉన్నాము." data-ur="ڈاکٹر محمد عثمان علی کے کلینک میں خوش آمدید، جو 14 سال سے زیادہ کے تجربے کے ساتھ ایک تجربہ کار نفسیاتی معالج اور عام ڈاکٹر ہیں۔ ہم اپنے تمام مریضوں کو مہربان، خفیہ اور پیشہ ورانہ نگہداشت فراہم کرنے کے لیے پرعزم ہیں۔">Welcome to the practice of Dr. Md Osman Ali, a seasoned psychotherapist and general physician with over 14 years of experience. We are committed to offering compassionate, confidential, and professional care to all our patients.</p>
+    </section>
 
-  <section id="about" class="tab-content">
-    <h2 data-en="About Dr. Osman Ali" data-te="డా. ఉస్మాన్ అలీ గురించి" data-ur="ڈاکٹر عثمان علی کے بارے میں">About Dr. Osman Ali</h2>
-    <p data-en="Dr. Md Osman Ali is a verified Psychotherapist and General Physician with over 14 years of experience treating patients with a range of psychological and physical conditions. His empathetic approach and dedication to patient care make him a trusted professional in the medical community." data-te="డా. మహమ్మద్ ఉస్మాన్ అలీ 14 సంవత్సరాలకు మించిన అనుభవంతో వివిధ మానసిక మరియు శారీరక వ్యాధులతో బాధపడుతున్న రోగులకు చికిత్స అందిస్తున్న ధృవీకరించబడిన మానసిక వైద్యుడు మరియు సాధారణ వైద్యుడు. అతని సానుభూతిపూర్వక విధానం మరియు రోగి సంరక్షణకు అంకితభావం అతన్ని వైద్య సమాజంలో నమ్మకమైన వృత్తిపరుడిగా చేస్తాయి." data-ur="ڈاکٹر محمد عثمان علی ایک تصدیق شدہ نفسیاتی معالج اور عام ڈاکٹر ہیں جن کے پاس 14 سال سے زیادہ کا تجربہ ہے جو مختلف نفسیاتی اور جسمانی حالات والے مریضوں کا علاج کرتے ہیں۔ ان کا ہمدردانہ انداز اور مریض کی دیکھ بھال کے لیے لگن انہیں طبی برادری میں ایک قابل اعتماد پیشہ ور بناتا ہے۔">Dr. Md Osman Ali is a verified Psychotherapist and General Physician with over 14 years of experience treating patients with a range of psychological and physical conditions. His empathetic approach and dedication to patient care make him a trusted professional in the medical community.</p>
-    <p>
-      <strong data-en="Qualifications:" data-te="అర్హతలు:" data-ur="قابلیت:">Qualifications:</strong><br>
-      <span data-en="MBBS, DPM (Psychiatry)" data-te="MBBS, DPM (మనోరోగ వైద్యం)" data-ur="ایم بی بی ایس، ڈی پی ایم (نفسیات)">MBBS, DPM (Psychiatry)</span><br>
-      <span data-en="Practicing since: 2010" data-te="అభ్యాసం చేస్తున్నది: 2010" data-ur="پریکٹس کرتے ہوئے: 2010">Practicing since: 2010</span><br>
-      <span data-en="Clinic Location: Himayat Nagar, Hyderabad" data-te="క్లినిక్ స్థానం: హిమాయత్ నగర్, హైదరాబాద్" data-ur="کلینک کا مقام: حمایت نگر، حیدرآباد">Clinic Location: Himayat Nagar, Hyderabad</span>
-    </p>
-  </section>
+    <section id="about" class="tab-content">
+      <h2 data-en="About Dr. Osman Ali" data-te="డా. ఉస్మాన్ అలీ గురించి" data-ur="ڈاکٹر عثمان علی کے بارے میں">About Dr. Osman Ali</h2>
+      <p data-en="Dr. Md Osman Ali is a verified Psychotherapist and General Physician with over 14 years of experience treating patients with a range of psychological and physical conditions. His empathetic approach and dedication to patient care make him a trusted professional in the medical community." data-te="డా. మహమ్మద్ ఉస్మాన్ అలీ 14 సంవత్సరాలకు మించిన అనుభవంతో వివిధ మానసిక మరియు శారీరక వ్యాధులతో బాధపడుతున్న రోగులకు చికిత్స అందిస్తున్న ధృవీకరించబడిన మానసిక వైద్యుడు మరియు సాధారణ వైద్యుడు. అతని సానుభూతిపూర్వక విధానం మరియు రోగి సంరక్షణకు అంకితభావం అతన్ని వైద్య సమాజంలో నమ్మకమైన వృత్తిపరుడిగా చేస్తాయి." data-ur="ڈاکٹر محمد عثمان علی ایک تصدیق شدہ نفسیاتی معالج اور عام ڈاکٹر ہیں جن کے پاس 14 سال سے زیادہ کا تجربہ ہے جو مختلف نفسیاتی اور جسمانی حالات والے مریضوں کا علاج کرتے ہیں۔ ان کا ہمدردانہ انداز اور مریض کی دیکھ بھال کے لیے لگن انہیں طبی برادری میں ایک قابل اعتماد پیشہ ور بناتا ہے۔">Dr. Md Osman Ali is a verified Psychotherapist and General Physician with over 14 years of experience treating patients with a range of psychological and physical conditions. His empathetic approach and dedication to patient care make him a trusted professional in the medical community.</p>
+      <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-top: 20px;">
+        <p><strong data-en="Qualifications:" data-te="అర్హతలు:" data-ur="قابلیت:">Qualifications:</strong><br>
+        <span data-en="MBBS, DPM (Psychiatry)" data-te="MBBS, DPM (మనోరోగ వైద్యం)" data-ur="ایم بی بی ایس، ڈی پی ایم (نفسیات)">MBBS, DPM (Psychiatry)</span></p>
+        <p><strong data-en="Experience:" data-te="అనుభవం:" data-ur="تجربہ:">Experience:</strong><br>
+        <span data-en="Practicing since 2010" data-te="2010 నుండి అభ్యసిస్తున్నారు" data-ur="2010 سے پریکٹس کر رہے ہیں">Practicing since 2010</span></p>
+        <p><strong data-en="Location:" data-te="స్థానం:" data-ur="مقام:">Location:</strong><br>
+        <span data-en="Himayat Nagar, Hyderabad" data-te="హిమాయత్ నగర్, హైదరాబాద్" data-ur="حمایت نگر، حیدرآباد">Himayat Nagar, Hyderabad</span></p>
+      </div>
+    </section>
 
-  <section id="services" class="tab-content">
-    <h2 data-en="Our Services" data-te="మా సేవలు" data-ur="ہماری خدمات">Our Services</h2>
-    <ul class="services-list">
-      <li><a href="https://www.psychologytoday.com/us/therapy-types/psychiatric-medication-management" target="_blank" data-en="Psychiatric Consultation" data-te="మానసిక వైద్య సలహా" data-ur="نفسیاتی مشاورت">Psychiatric Consultation</a></li>
-      <li><a href="https://www.nimh.nih.gov/health/topics/anxiety-disorders" target="_blank" data-en="Stress and Anxiety Management" data-te="ఒత్తిడి మరియు ఆందోళన నిర్వహణ" data-ur="تناؤ اور اضطراب کا انتظام">Stress and Anxiety Management</a></li>
-      <li><a href="https://www.nimh.nih.gov/health/topics/depression" target="_blank" data-en="Depression Therapy" data-te="డిప్రెషన్ థెరపీ" data-ur="ڈپریشن کی تھراپی">Depression Therapy</a></li>
-      <li><a href="https://www.sleepfoundation.org/sleep-disorders" target="_blank" data-en="Sleep Disorders Treatment" data-te="నిద్రలేమి చికిత్స" data-ur="نیند کی خرابیوں کا علاج">Sleep Disorders Treatment</a></li>
-      <li><a href="https://www.psychiatry.org/patients-families/what-is-psychiatry" target="_blank" data-en="Medication Management" data-te="మందుల నిర్వహణ" data-ur="دوائیوں کا انتظام">Medication Management</a></li>
-      <li><a href="https://www.who.int/news-room/fact-sheets/detail/mental-disorders" target="_blank" data-en="General Health Consultation" data-te="సాధారణ ఆరోగ్య సలహా" data-ur="عمومی صحت کی مشاورت">General Health Consultation</a></li>
-    </ul>
-  </section>
+    <section id="services" class="tab-content">
+      <h2 data-en="Our Services" data-te="మా సేవలు" data-ur="ہماری خدمات">Our Services</h2>
+      <ul class="services-list">
+        <li><a href="https://www.psychologytoday.com/us/therapy-types/psychiatric-medication-management" target="_blank" data-en="Psychiatric Consultation" data-te="మానసిక వైద్య సలహా" data-ur="نفسیاتی مشاورت">Psychiatric Consultation</a></li>
+        <li><a href="https://www.nimh.nih.gov/health/topics/anxiety-disorders" target="_blank" data-en="Stress and Anxiety Management" data-te="ఒత్తిడి మరియు ఆందోళన నిర్వహణ" data-ur="تناؤ اور اضطراب کا انتظام">Stress and Anxiety Management</a></li>
+        <li><a href="https://www.nimh.nih.gov/health/topics/depression" target="_blank" data-en="Depression Therapy" data-te="డిప్రెషన్ థెరపీ" data-ur="ڈپریشن کی تھراپی">Depression Therapy</a></li>
+        <li><a href="https://www.sleepfoundation.org/sleep-disorders" target="_blank" data-en="Sleep Disorders Treatment" data-te="నిద్రలేమి చికిత్స" data-ur="نیند کی خرابیوں کا علاج">Sleep Disorders Treatment</a></li>
+        <li><a href="https://www.psychiatry.org/patients-families/what-is-psychiatry" target="_blank" data-en="Medication Management" data-te="మందుల నిర్వహణ" data-ur="دوائیوں کا انتظام">Medication Management</a></li>
+        <li><a href="https://www.who.int/news-room/fact-sheets/detail/mental-disorders" target="_blank" data-en="General Health Consultation" data-te="సాధారణ ఆరోగ్య సలహా" data-ur="عمومی صحت کی مشاورت">General Health Consultation</a></li>
+      </ul>
+    </section>
 
-  <section id="testimonials" class="tab-content">
-    <h2 data-en="Patient Testimonials" data-te="రోగుల సాక్ష్యాలు" data-ur="مریضوں کی گواہیاں">Patient Testimonials</h2>
-    
-    <div class="testimonial-item">
-      <p data-en='"Dr. Osman Ali helped me through the most difficult phase of my life with patience and kindness. I am forever grateful."' data-te='"డా. ఉస్మాన్ అలీ నా జీవితంలోని అత్యంత కష్టమైన దశలో ధైర్యం మరియు దయతో నాకు సహాయం చేశారు. నేను ఎల్లప్పుడూ కృతజ్ఞుడిని."' data-ur='"ڈاکٹر عثمان علی نے میری زندگی کے سب سے مشکل دور میں صبر اور احسان کے ساتھ میری مدد کی۔ میں ہمیشہ شکر گزار ہوں۔"'>"Dr. Osman Ali helped me through the most difficult phase of my life with patience and kindness. I am forever grateful."</p>
-      <div class="testimonial-author" data-en="– Patient A" data-te="– రోగి A" data-ur="– مریض A">– Patient A</div>
-    </div>
-    
-    <div class="testimonial-item">
-      <p data-en='"Highly professional and very understanding. I have been visiting Dr. Osman for over 2 years and my mental health has improved drastically."' data-te='"అత్యంత వృత్తిపరమైన మరియు చాలా అర్థం చేసుకోగల. నేను 2 సంవత్సరాలకు మించి డా. ఉస్మాన్‌ను సందర్శిస్తున్నాను మరియు నా మానసిక ఆరోగ్యం గణనీయంగా మెరుగుపడింది."' data-ur='"انتہائی پیشہ ور اور بہت سمجھدار۔ میں 2 سال سے زیادہ عرصے سے ڈاکٹر عثمان سے ملاقات کر رہا ہوں اور میری ذہنی صحت میں نمایاں بہتری آئی ہے۔"'>"Highly professional and very understanding. I have been visiting Dr. Osman for over 2 years and my mental health has improved drastically."</p>
-      <div class="testimonial-author" data-en="– Patient B" data-te="– రోగి B" data-ur="– مریض B">– Patient B</div>
-    </div>
-
-    <div id="user-testimonials"></div>
-
-    <div class="testimonial-form">
-      <h3 data-en="Share Your Experience" data-te="మీ అనుభవాన్ని పంచుకోండి" data-ur="اپنا تجربہ شیئر کریں">Share Your Experience</h3>
-      <form id="testimonialForm">
-        <label for="testimonial-name" data-en="Your Name (optional):" data-te="మీ పేరు (ఐచ్ఛికం):" data-ur="آپ کا نام (اختیاری):">Your Name (optional):</label>
-        <input type="text" id="testimonial-name" name="testimonial-name" data-en="Anonymous" data-te="అజ్ఞాత" data-ur="نامعلوم" placeholder="Anonymous" />
-        
-        <label for="testimonial-text" data-en="Your Testimonial:" data-te="మీ సాక్ష్యం:" data-ur="آپ کی گواہی:">Your Testimonial:</label>
-        <textarea id="testimonial-text" name="testimonial-text" rows="4" required data-en="Share your experience with Dr. Osman Ali..." data-te="డా. ఉస్మాన్ అలీతో మీ అనుభవాన్ని పంచుకోండి..." data-ur="ڈاکٹر عثمان علی کے ساتھ اپنا تجربہ شیئر کریں..." placeholder="Share your experience with Dr. Osman Ali..."></textarea>
-        
-        <button type="submit" data-en="Submit Testimonial" data-te="సాక్ష్యం సమర్పించండి" data-ur="گواہی جمع کریں">Submit Testimonial</button>
-      </form>
-    </div>
-  </section>
-
-  <section id="gallery" class="tab-content">
-    <h2 data-en="Gallery" data-te="గ్యాలరీ" data-ur="گیلری">Gallery</h2>
-    <input type="file" id="gallery-upload" multiple accept="image/*,video/*" />
-    <div class="gallery-grid" id="gallery-display"></div>
-  </section>
-
-  <section id="contact" class="tab-content">
-    <h2 data-en="Contact Us" data-te="మాతో సంప్రదించండి" data-ur="ہم سے رابطہ کریں">Contact Us</h2>
-    <form id="contactForm">
-      <label for="name" data-en="Name:" data-te="పేరు:" data-ur="نام:">Name:</label>
-      <input type="text" id="name" name="name" required />
-      <label for="email" data-en="Email:" data-te="ఇమెయిల్:" data-ur="ای میل:">Email:</label>
-      <input type="email" id="email" name="email" required />
-      <label for="message" data-en="Message:" data-te="సందేశం:" data-ur="پیغام:">Message:</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
-      <button type="submit" data-en="Send Message" data-te="సందేశం పంపండి" data-ur="پیغام بھیجیں">Send Message</button>
-    </form>
-    <p>
-      <strong data-en="Phone:" data-te="ఫోన్:" data-ur="فون:">Phone:</strong> +91-XXXXXXXXXX<br>
-      <strong data-en="Email:" data-te="ఇమెయిల్:" data-ur="ای میل:">Email:</strong> drosmanali@gmail.com<br>
-      <strong data-en="Address:" data-te="చిరునామా:" data-ur="پتہ:">Address:</strong> <span data-en="Himayat Nagar, Hyderabad" data-te="హిమాయత్ నగర్, హైదరాబాద్" data-ur="حمایت نگر، حیدرآباد">Himayat Nagar, Hyderabad</span>
-    </p>
-  </section>
-
-  <footer>
-    <p data-en="© 2025 Dr. Md Osman Ali. All rights reserved." data-te="© 2025 డా. మహమ్మద్ ఉస్మాన్ అలీ. అన్ని హక్కులు సురక్షితం." data-ur="© 2025 ڈاکٹر محمد عثمان علی۔ تمام حقوق محفوظ ہیں۔">© 2025 Dr. Md Osman Ali. All rights reserved.</p>
-  </footer>
-
-  <script>
-    // In-memory storage for testimonials and gallery items
-    let testimonials = [];
-    let galleryItems = [];
-    let doctorPhotoSrc = '';
-    let currentLanguage = 'english';
-
-    // Language translations
-    const translations = {
-      thankYou: {
-        english: 'Thank you for contacting us! We will get back to you soon.',
-        telugu: 'మమ్మల్ని సంప్రదించినందుకు ధన్యవాదాలు! మేము త్వరలో మీకు తిరిగి సమాధానం ఇస్తాము.',
-        urdu: 'ہم سے رابطہ کرنے کے لیے آپ کا شکریہ! ہم جلد ہی آپ کو جواب دیں گے۔'
-      },
-      testimonialThanks: {
-        english: 'Thank you for sharing your testimonial!',
-        telugu: 'మీ సాక్ష్యాన్ని పంచుకున్నందుకు ధన్యవాదాలు!',
-        urdu: 'آپ کی گواہی شیئر کرنے کے لیے آپ کا شکریہ!'
-      },
-      anonymous: {
-        english: 'Anonymous',
-        telugu: 'అజ్ఞాత',
-        urdu: 'نامعلوم'
-      }
-    };
-
-    // Language switching function
-    function changeLanguage(lang) {
-      currentLanguage = lang;
+    <section id="testimonials" class="tab-content">
+      <h2 data-en="Patient Testimonials" data-te="రోగుల సాక్ష్యాలు" data-ur="مریضوں کی گواہیاں">Patient Testimonials</h2>
       
-      // Update active language button
-      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelector(`.lang-btn[onclick="changeLanguage('${lang}')"]`).classList.add('active');
+      <div class="testimonial-item">
+        <p data-en="Dr. Osman Ali helped me through the most difficult phase of my life with patience and kindness. I am forever grateful." data-te="డా. ఉస్మాన్ అలీ నా జీవితంలోని అత్యంత కష్టమైన దశలో ధైర్యం మరియు దయతో నాకు సహాయం చేశారు. నేను ఎల్లప్పుడూ కృతజ్ఞుడిని." data-ur="ڈاکٹر عثمان علی نے میری زندگی کے سب سے مشکل دور میں صبر اور احسان کے ساتھ میری مدد کی۔ میں ہمیشہ شکر گزار ہوں۔">Dr. Osman Ali helped me through the most difficult phase of my life with patience and kindness. I am forever grateful.</p>
+        <div class="testimonial-author" data-en="– Patient A" data-te="– రోగి A" data-ur="– مریض A">– Patient A</div>
+      </div>
       
-      // Update all translatable elements
-      const elements = document.querySelectorAll('[data-en]');
-      elements.forEach(element => {
-        const key = lang === 'english' ? 'en' : (lang === 'telugu' ? 'te' : 'ur');
-        if (element.getAttribute(`data-${key}`)) {
-          if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-            element.placeholder = element.getAttribute(`data-${key}`);
-          } else {
-            element.textContent = element.getAttribute(`data-${key}`);
-          }
-        }
-      });
-
-      // Update body class for RTL/LTR
-      document.body.className = '';
-      if (lang === 'urdu') {
-        document.body.classList.add('urdu');
-      } else if (lang === 'telugu') {
-        document.body.classList.add('telugu');
-      }
-
-      // Refresh testimonials to update language
-      displayTestimonials();
-    }
-
-    // Tab switching
-    const links = document.querySelectorAll('.tab-link');
-    const tabs = document.querySelectorAll('.tab-content');
-    links.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        links.forEach(l => l.classList.remove('active'));
-        tabs.forEach(t => t.classList.remove('active'));
-        this.classList.add('active');
-        const target = this.getAttribute('href').substring(1);
-        document.getElementById(target).classList.add('active');
-      });
-    });
-
-    // Contact form
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert(translations.thankYou[currentLanguage]);
-      this.reset();
-    });
-
-    // Testimonial form
-    document.getElementById('testimonialForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const name = document.getElementById('testimonial-name').value || translations.anonymous[currentLanguage];
-      const text = document.getElementById('testimonial-text').value;
-      
-      if (text.trim()) {
-        const testimonial = { name: name, text: text, language: currentLanguage };
-        testimonials.push(testimonial);
-        displayTestimonials();
-        this.reset();
-        alert(translations.testimonialThanks[currentLanguage]);
-      }
-    });
-
-    function displayTestimonials() {
-      const container = document.getElementById('user-testimonials');
-      container.innerHTML = '';
-      
-      testimonials.forEach((testimonial, index) => {
-        const div = document.createElement('div');
-        div.className = 'testimonial-item';
-        div.innerHTML = `
-          <p>"${testimonial.text}"</p>
-          <div class="testimonial-author">– ${testimonial.name}</div>
-        `;
-        container.appendChild(div);
-      });
-    }
-
-    // Doctor photo upload
-    document.getElementById('photo-upload').addEventListener('change', function(event) {
-      const file = event.target.files[0];
-      const maxSize = 5 * 1024 * 1024; // 5MB
-      if (file) {
-        if (!file.type.match('image/*')) {
-          alert('Please upload a valid image file.');
-          return;
-        }
-        if (file.size > maxSize) {
-          alert('Image exceeds 5MB limit.');
-          return;
-        }
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          const photoElement = document.getElementById('doctor-photo');
-          photoElement.src = e.target.result;
-          doctorPhotoSrc = e.target.result;
-        };
-        reader.readAsDataURL(file);
-      }
-      event.target.value = '';
-    });
-
-    // Gallery upload and management
-    function displayGallery() {
-      const gallery = document.getElementById('gallery-display');
-      gallery.innerHTML = '';
-      
-      galleryItems.forEach((item, index) => {
-        const container = document.createElement('div');
-        container.className = 'gallery-item';
-        
-        const media = item.type === 'video' ? document.createElement('video') : document.createElement('img');
-        if (item.type === 'video') media.controls = true;
-        media.src = item.src;
-        container.appendChild(media);
-        
-        const btn = document.createElement('button');
-        btn.textContent = 'Delete';
-        btn.className = 'delete-btn';
-        btn.onclick = () => {
-          galleryItems.splice(index, 1);
-          displayGallery();
-        };
-        container.appendChild(btn);
-        gallery.appendChild(container);
-      });
-    }
-
-    document.getElementById('gallery-upload').addEventListener('change', function(event) {
-      const files = event.target.files;
-      const maxSize = 5 * 1024 * 1024; // 5MB
-      
-      Array.from(files).forEach(file => {
-        if (file.size > maxSize) {
-          alert(`File ${file.name} exceeds 5MB limit.`);
-          return;
-        }
-        if (!file.type.match('image/*') && !file.type.match('video/*')) {
-          alert(`File ${file.name} is not a valid image or video.`);
-          return;
-        }
-        
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          const item = {
-            src: e.target.result,
-            type: file.type.startsWith('video') ? 'video' : 'image'
-          };
-          galleryItems.push(item);
-          displayGallery();
-        };
-        reader.readAsDataURL(file);
-      });
-      event.target.value = '';
-    });
-  </script>
-</body>
-</html>
+      <div class="testimonial-item">
+        <p data-en="Highly professional and very understanding. I have been visiting Dr. Osman for over 2 years and my mental health has improved drastically." data-te="అత్యంత వృత్తిపరమైన మరియు చాలా అర్థం చేసుకోగల. నేను 2 సంవత్సరాలకు మించి డా. ఉస్మాన్‌ను సందర్శ
