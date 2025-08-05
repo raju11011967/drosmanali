@@ -47,14 +47,17 @@
     nav {
       background-color: #0074d9;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x: auto;
     }
     nav a {
-      padding: 15px 20px;
+      padding: 15px 25px;
       color: white;
       text-decoration: none;
       border-right: 1px solid #005fa3;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     nav a:last-child {
       border-right: none;
@@ -92,6 +95,7 @@
       margin-top: 5px;
       border: 1px solid #ccc;
       border-radius: 4px;
+      box-sizing: border-box;
     }
     form button {
       margin-top: 15px;
@@ -135,12 +139,67 @@
       cursor: pointer;
       font-size: 12px;
     }
+
+    /* Services styling */
+    .services-list {
+      list-style: none;
+      padding: 0;
+    }
+    .services-list li {
+      margin: 15px 0;
+      padding: 15px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border-left: 4px solid #0074d9;
+    }
+    .services-list a {
+      color: #0074d9;
+      text-decoration: none;
+      font-weight: bold;
+      display: block;
+    }
+    .services-list a:hover {
+      color: #005fa3;
+      text-decoration: underline;
+    }
+
+    /* Testimonials styling */
+    .testimonial-item {
+      background: white;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border-left: 4px solid #28a745;
+    }
+    .testimonial-author {
+      font-style: italic;
+      color: #666;
+      margin-top: 10px;
+    }
+    .testimonial-form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin: 20px 0;
+    }
+    .testimonial-form h3 {
+      color: #0074d9;
+      margin-top: 0;
+    }
+
     @media screen and (max-width: 600px) {
+      nav {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
       nav a {
-        flex: 1 1 100%;
+        min-width: 120px;
         text-align: center;
-        border-right: none;
-        border-bottom: 1px solid #005fa3;
+        border-right: 1px solid #005fa3;
+        border-bottom: none;
       }
     }
   </style>
@@ -152,7 +211,7 @@
       <p>Psychotherapist & General Physician, Himayat Nagar, Hyderabad</p>
     </div>
     <div>
-      <img id="doctor-photo" src="path/to/doctor.jpg" alt="Dr. Md Osman Ali" class="main-photo" onerror="this.src='https://via.placeholder.com/80?text=Fallback'" />
+      <img id="doctor-photo" src="https://via.placeholder.com/80?text=Doctor" alt="Dr. Md Osman Ali" class="main-photo" />
       <input type="file" id="photo-upload" accept="image/*" />
     </div>
   </header>
@@ -179,19 +238,42 @@
   </section>
   <section id="services" class="tab-content">
     <h2>Our Services</h2>
-    <ul>
-      <li>Psychiatric Consultation</li>
-      <li>Stress and Anxiety Management</li>
-      <li>Depression Therapy</li>
-      <li>Sleep Disorders Treatment</li>
-      <li>Medication Management</li>
-      <li>General Health Consultation</li>
+    <ul class="services-list">
+      <li><a href="https://www.psychologytoday.com/us/therapy-types/psychiatric-medication-management" target="_blank">Psychiatric Consultation</a></li>
+      <li><a href="https://www.nimh.nih.gov/health/topics/anxiety-disorders" target="_blank">Stress and Anxiety Management</a></li>
+      <li><a href="https://www.nimh.nih.gov/health/topics/depression" target="_blank">Depression Therapy</a></li>
+      <li><a href="https://www.sleepfoundation.org/sleep-disorders" target="_blank">Sleep Disorders Treatment</a></li>
+      <li><a href="https://www.psychiatry.org/patients-families/what-is-psychiatry" target="_blank">Medication Management</a></li>
+      <li><a href="https://www.who.int/news-room/fact-sheets/detail/mental-disorders" target="_blank">General Health Consultation</a></li>
     </ul>
   </section>
   <section id="testimonials" class="tab-content">
     <h2>Patient Testimonials</h2>
-    <p>“Dr. Osman Ali helped me through the most difficult phase of my life with patience and kindness. I’m forever grateful.” – Patient A</p>
-    <p>“Highly professional and very understanding. I’ve been visiting Dr. Osman for over 2 years and my mental health has improved drastically.” – Patient B</p>
+    
+    <div class="testimonial-item">
+      <p>"Dr. Osman Ali helped me through the most difficult phase of my life with patience and kindness. I'm forever grateful."</p>
+      <div class="testimonial-author">– Patient A</div>
+    </div>
+    
+    <div class="testimonial-item">
+      <p>"Highly professional and very understanding. I've been visiting Dr. Osman for over 2 years and my mental health has improved drastically."</p>
+      <div class="testimonial-author">– Patient B</div>
+    </div>
+
+    <div id="user-testimonials"></div>
+
+    <div class="testimonial-form">
+      <h3>Share Your Experience</h3>
+      <form id="testimonialForm">
+        <label for="testimonial-name">Your Name (optional):</label>
+        <input type="text" id="testimonial-name" name="testimonial-name" placeholder="Anonymous" />
+        
+        <label for="testimonial-text">Your Testimonial:</label>
+        <textarea id="testimonial-text" name="testimonial-text" rows="4" required placeholder="Share your experience with Dr. Osman Ali..."></textarea>
+        
+        <button type="submit">Submit Testimonial</button>
+      </form>
+    </div>
   </section>
   <section id="gallery" class="tab-content">
     <h2>Gallery</h2>
@@ -218,6 +300,11 @@
     <p>&copy; 2025 Dr. Md Osman Ali. All rights reserved.</p>
   </footer>
   <script>
+    // In-memory storage for testimonials and gallery items
+    let testimonials = [];
+    let galleryItems = [];
+    let doctorPhotoSrc = '';
+
     // Tab switching
     const links = document.querySelectorAll('.tab-link');
     const tabs = document.querySelectorAll('.tab-content');
@@ -231,20 +318,46 @@
         document.getElementById(target).classList.add('active');
       });
     });
+
     // Contact form
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       alert('Thank you for contacting us! We will get back to you soon.');
       this.reset();
     });
-    // Doctor photo upload
-    function loadDoctorPhoto() {
-      const savedPhoto = localStorage.getItem('doctorPhoto');
-      const photoElement = document.getElementById('doctor-photo');
-      if (savedPhoto) {
-        photoElement.src = savedPhoto;
+
+    // Testimonial form
+    document.getElementById('testimonialForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('testimonial-name').value || 'Anonymous';
+      const text = document.getElementById('testimonial-text').value;
+      
+      if (text.trim()) {
+        const testimonial = { name: name, text: text };
+        testimonials.push(testimonial);
+        displayTestimonials();
+        this.reset();
+        alert('Thank you for sharing your testimonial!');
       }
+    });
+
+    function displayTestimonials() {
+      const container = document.getElementById('user-testimonials');
+      container.innerHTML = '';
+      
+      testimonials.forEach((testimonial, index) => {
+        const div = document.createElement('div');
+        div.className = 'testimonial-item';
+        div.innerHTML = `
+          <p>"${testimonial.text}"</p>
+          <div class="testimonial-author">– ${testimonial.name}</div>
+        `;
+        container.appendChild(div);
+      });
     }
+
+    // Doctor photo upload
     document.getElementById('photo-upload').addEventListener('change', function(event) {
       const file = event.target.files[0];
       const maxSize = 5 * 1024 * 1024; // 5MB
@@ -261,85 +374,66 @@
         reader.onload = function(e) {
           const photoElement = document.getElementById('doctor-photo');
           photoElement.src = e.target.result;
-          localStorage.setItem('doctorPhoto', e.target.result);
+          doctorPhotoSrc = e.target.result;
         };
         reader.readAsDataURL(file);
       }
       event.target.value = '';
     });
-    window.addEventListener('load', loadDoctorPhoto);
-    // Gallery upload + delete with localStorage
-    function loadGalleryFromStorage() {
+
+    // Gallery upload and management
+    function displayGallery() {
       const gallery = document.getElementById('gallery-display');
-      const savedItems = JSON.parse(localStorage.getItem('galleryItems') || '[]');
-      savedItems.forEach(item => {
+      gallery.innerHTML = '';
+      
+      galleryItems.forEach((item, index) => {
         const container = document.createElement('div');
         container.className = 'gallery-item';
+        
         const media = item.type === 'video' ? document.createElement('video') : document.createElement('img');
         if (item.type === 'video') media.controls = true;
         media.src = item.src;
         container.appendChild(media);
+        
         const btn = document.createElement('button');
         btn.textContent = 'Delete';
         btn.className = 'delete-btn';
         btn.onclick = () => {
-          container.remove();
-          updateStorage();
+          galleryItems.splice(index, 1);
+          displayGallery();
         };
         container.appendChild(btn);
         gallery.appendChild(container);
       });
     }
-    function updateStorage() {
-      const gallery = document.getElementById('gallery-display');
-      const items = Array.from(gallery.children).map(container => {
-        const media = container.querySelector('img, video');
-        return { src: media.src, type: media.tagName.toLowerCase() };
-      });
-      localStorage.setItem('galleryItems', JSON.stringify(items));
-    }
+
     document.getElementById('gallery-upload').addEventListener('change', function(event) {
       const files = event.target.files;
-      const gallery = document.getElementById('gallery-display');
       const maxSize = 5 * 1024 * 1024; // 5MB
+      
       Array.from(files).forEach(file => {
         if (file.size > maxSize) {
           alert(`File ${file.name} exceeds 5MB limit.`);
           return;
         }
-        if (!file.type.match('image/*|video/*')) {
+        if (!file.type.match('image/*') && !file.type.match('video/*')) {
           alert(`File ${file.name} is not a valid image or video.`);
           return;
         }
+        
         const reader = new FileReader();
         reader.onload = function(e) {
-          const container = document.createElement('div');
-          container.className = 'gallery-item';
-          let media;
-          if (file.type.startsWith('video')) {
-            media = document.createElement('video');
-            media.controls = true;
-          } else {
-            media = document.createElement('img');
-          }
-          media.src = e.target.result;
-          container.appendChild(media);
-          const btn = document.createElement('button');
-          btn.textContent = 'Delete';
-          btn.className = 'delete-btn';
-          btn.onclick = () => {
-            container.remove();
-            updateStorage();
+          const item = {
+            src: e.target.result,
+            type: file.type.startsWith('video') ? 'video' : 'image'
           };
-          container.appendChild(btn);
-          gallery.appendChild(container);
-          updateStorage();
+          galleryItems.push(item);
+          displayGallery();
         };
         reader.readAsDataURL(file);
       });
       event.target.value = '';
     });
-    window.addEventListener('load', loadGalleryFromStorage);
   </script>
 </body>
 </html>
