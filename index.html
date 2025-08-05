@@ -16,10 +16,12 @@
       background-color: #005fba;
       color: white;
       padding: 20px;
+      padding-top: 50px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      position: relative;
     }
     header h1 {
       margin: 0;
@@ -43,6 +45,32 @@
       margin-top: 10px;
       width: 100%;
       max-width: 200px;
+    }
+    .language-toggle {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+    .lang-btn {
+      background-color: rgba(255,255,255,0.2);
+      color: white;
+      border: 1px solid white;
+      padding: 5px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: background-color 0.3s;
+    }
+    .lang-btn:hover {
+      background-color: rgba(255,255,255,0.3);
+    }
+    .lang-btn.active {
+      background-color: white;
+      color: #005fba;
     }
     nav {
       background-color: #0074d9;
@@ -190,7 +218,21 @@
       margin-top: 0;
     }
 
+    /* Language-specific styles */
+    .urdu, .telugu {
+      font-family: 'Arial Unicode MS', sans-serif;
+      direction: rtl;
+      text-align: right;
+    }
+    .telugu {
+      direction: ltr;
+      text-align: left;
+    }
+
     @media screen and (max-width: 600px) {
+      header {
+        padding-top: 60px;
+      }
       nav {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -201,14 +243,32 @@
         border-right: 1px solid #005fa3;
         border-bottom: none;
       }
+      .language-toggle {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-top: 10px;
+        justify-content: center;
+        width: 100%;
+      }
+      .lang-btn {
+        flex: 1;
+        max-width: 80px;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="language-toggle">
+    <button class="lang-btn active" onclick="changeLanguage('english')">English</button>
+    <button class="lang-btn" onclick="changeLanguage('telugu')">తెలుగు</button>
+    <button class="lang-btn" onclick="changeLanguage('urdu')">اردو</button>
+  </div>
+
   <header>
     <div class="header-left">
-      <h1>Dr. Md Osman Ali</h1>
-      <p>Psychotherapist & General Physician, Himayat Nagar, Hyderabad</p>
+      <h1 data-en="Dr. Md Osman Ali" data-te="డా. మహమ్మద్ ఉస్మాన్ అలీ" data-ur="ڈاکٹر محمد عثمان علی">Dr. Md Osman Ali</h1>
+      <p data-en="Psychotherapist & General Physician, Himayat Nagar, Hyderabad" data-te="మానసిక వైద్యుడు మరియు సాధారణ వైద్యుడు, హిమాయత్ నగర్, హైదరాబాద్" data-ur="نفسیاتی معالج اور عام ڈاکٹر، حمایت نگر، حیدرآباد">Psychotherapist & General Physician, Himayat Nagar, Hyderabad</p>
     </div>
     <div>
       <img id="doctor-photo" src="https://via.placeholder.com/80?text=Doctor" alt="Dr. Md Osman Ali" class="main-photo" />
@@ -216,94 +276,157 @@
     </div>
   </header>
   <nav>
-    <a href="#home" class="tab-link active">Home</a>
-    <a href="#about" class="tab-link">About</a>
-    <a href="#services" class="tab-link">Services</a>
-    <a href="#testimonials" class="tab-link">Testimonials</a>
-    <a href="#gallery" class="tab-link">Gallery</a>
-    <a href="#contact" class="tab-link">Contact</a>
+    <a href="#home" class="tab-link active" data-en="Home" data-te="హోమ్" data-ur="ہوم">Home</a>
+    <a href="#about" class="tab-link" data-en="About" data-te="గురించి" data-ur="تعارف">About</a>
+    <a href="#services" class="tab-link" data-en="Services" data-te="సేవలు" data-ur="خدمات">Services</a>
+    <a href="#testimonials" class="tab-link" data-en="Testimonials" data-te="సాక్ష్యాలు" data-ur="گواہیاں">Testimonials</a>
+    <a href="#gallery" class="tab-link" data-en="Gallery" data-te="గ్యాలరీ" data-ur="گیلری">Gallery</a>
+    <a href="#contact" class="tab-link" data-en="Contact" data-te="సంప్రదింపు" data-ur="رابطہ">Contact</a>
   </nav>
+
   <section id="home" class="tab-content active">
-    <h2>Welcome</h2>
-    <p>Welcome to the practice of Dr. Md Osman Ali, a seasoned psychotherapist and general physician with over 14 years of experience. We are committed to offering compassionate, confidential, and professional care to all our patients.</p>
+    <h2 data-en="Welcome" data-te="స్వాగతం" data-ur="خوش آمدید">Welcome</h2>
+    <p data-en="Welcome to the practice of Dr. Md Osman Ali, a seasoned psychotherapist and general physician with over 14 years of experience. We are committed to offering compassionate, confidential, and professional care to all our patients." data-te="14 సంవత్సరాలకు మించిన అనుభవం కలిగిన అనుభవజ్ఞుడైన మానసిక వైద్యుడు మరియు సాధారణ వైద్యుడు డా. మహమ్మద్ ఉస్మాన్ అలీ యొక్క అభ్యాసానికి స్వాగతం. మేము మా అందరు రోగులకు దయగల, రహస్య మరియు వృత్తిపరమైన సంరక్షణను అందించడానికి కట్టుబడి ఉన్నాము." data-ur="ڈاکٹر محمد عثمان علی کے کلینک میں خوش آمدید، جو 14 سال سے زیادہ کے تجربے کے ساتھ ایک تجربہ کار نفسیاتی معالج اور عام ڈاکٹر ہیں۔ ہم اپنے تمام مریضوں کو مہربان، خفیہ اور پیشہ ورانہ نگہداشت فراہم کرنے کے لیے پرعزم ہیں۔">Welcome to the practice of Dr. Md Osman Ali, a seasoned psychotherapist and general physician with over 14 years of experience. We are committed to offering compassionate, confidential, and professional care to all our patients.</p>
   </section>
+
   <section id="about" class="tab-content">
-    <h2>About Dr. Osman Ali</h2>
-    <p>Dr. Md Osman Ali is a verified Psychotherapist and General Physician with over 14 years of experience treating patients with a range of psychological and physical conditions. His empathetic approach and dedication to patient care make him a trusted professional in the medical community.</p>
-    <p><strong>Qualifications:</strong><br>
-       MBBS, DPM (Psychiatry)<br>
-       Practicing since: 2010<br>
-       Clinic Location: Himayat Nagar, Hyderabad
+    <h2 data-en="About Dr. Osman Ali" data-te="డా. ఉస్మాన్ అలీ గురించి" data-ur="ڈاکٹر عثمان علی کے بارے میں">About Dr. Osman Ali</h2>
+    <p data-en="Dr. Md Osman Ali is a verified Psychotherapist and General Physician with over 14 years of experience treating patients with a range of psychological and physical conditions. His empathetic approach and dedication to patient care make him a trusted professional in the medical community." data-te="డా. మహమ్మద్ ఉస్మాన్ అలీ 14 సంవత్సరాలకు మించిన అనుభవంతో వివిధ మానసిక మరియు శారీరక వ్యాధులతో బాధపడుతున్న రోగులకు చికిత్స అందిస్తున్న ధృవీకరించబడిన మానసిక వైద్యుడు మరియు సాధారణ వైద్యుడు. అతని సానుభూతిపూర్వక విధానం మరియు రోగి సంరక్షణకు అంకితభావం అతన్ని వైద్య సమాజంలో నమ్మకమైన వృత్తిపరుడిగా చేస్తాయి." data-ur="ڈاکٹر محمد عثمان علی ایک تصدیق شدہ نفسیاتی معالج اور عام ڈاکٹر ہیں جن کے پاس 14 سال سے زیادہ کا تجربہ ہے جو مختلف نفسیاتی اور جسمانی حالات والے مریضوں کا علاج کرتے ہیں۔ ان کا ہمدردانہ انداز اور مریض کی دیکھ بھال کے لیے لگن انہیں طبی برادری میں ایک قابل اعتماد پیشہ ور بناتا ہے۔">Dr. Md Osman Ali is a verified Psychotherapist and General Physician with over 14 years of experience treating patients with a range of psychological and physical conditions. His empathetic approach and dedication to patient care make him a trusted professional in the medical community.</p>
+    <p>
+      <strong data-en="Qualifications:" data-te="అర్హతలు:" data-ur="قابلیت:">Qualifications:</strong><br>
+      <span data-en="MBBS, DPM (Psychiatry)" data-te="MBBS, DPM (మనోరోగ వైద్యం)" data-ur="ایم بی بی ایس، ڈی پی ایم (نفسیات)">MBBS, DPM (Psychiatry)</span><br>
+      <span data-en="Practicing since: 2010" data-te="అభ్యాసం చేస్తున్నది: 2010" data-ur="پریکٹس کرتے ہوئے: 2010">Practicing since: 2010</span><br>
+      <span data-en="Clinic Location: Himayat Nagar, Hyderabad" data-te="క్లినిక్ స్థానం: హిమాయత్ నగర్, హైదరాబాద్" data-ur="کلینک کا مقام: حمایت نگر، حیدرآباد">Clinic Location: Himayat Nagar, Hyderabad</span>
     </p>
   </section>
+
   <section id="services" class="tab-content">
-    <h2>Our Services</h2>
+    <h2 data-en="Our Services" data-te="మా సేవలు" data-ur="ہماری خدمات">Our Services</h2>
     <ul class="services-list">
-      <li><a href="https://www.psychologytoday.com/us/therapy-types/psychiatric-medication-management" target="_blank">Psychiatric Consultation</a></li>
-      <li><a href="https://www.nimh.nih.gov/health/topics/anxiety-disorders" target="_blank">Stress and Anxiety Management</a></li>
-      <li><a href="https://www.nimh.nih.gov/health/topics/depression" target="_blank">Depression Therapy</a></li>
-      <li><a href="https://www.sleepfoundation.org/sleep-disorders" target="_blank">Sleep Disorders Treatment</a></li>
-      <li><a href="https://www.psychiatry.org/patients-families/what-is-psychiatry" target="_blank">Medication Management</a></li>
-      <li><a href="https://www.who.int/news-room/fact-sheets/detail/mental-disorders" target="_blank">General Health Consultation</a></li>
+      <li><a href="https://www.psychologytoday.com/us/therapy-types/psychiatric-medication-management" target="_blank" data-en="Psychiatric Consultation" data-te="మానసిక వైద్య సలహా" data-ur="نفسیاتی مشاورت">Psychiatric Consultation</a></li>
+      <li><a href="https://www.nimh.nih.gov/health/topics/anxiety-disorders" target="_blank" data-en="Stress and Anxiety Management" data-te="ఒత్తిడి మరియు ఆందోళన నిర్వహణ" data-ur="تناؤ اور اضطراب کا انتظام">Stress and Anxiety Management</a></li>
+      <li><a href="https://www.nimh.nih.gov/health/topics/depression" target="_blank" data-en="Depression Therapy" data-te="డిప్రెషన్ థెరపీ" data-ur="ڈپریشن کی تھراپی">Depression Therapy</a></li>
+      <li><a href="https://www.sleepfoundation.org/sleep-disorders" target="_blank" data-en="Sleep Disorders Treatment" data-te="నిద్రలేమి చికిత్స" data-ur="نیند کی خرابیوں کا علاج">Sleep Disorders Treatment</a></li>
+      <li><a href="https://www.psychiatry.org/patients-families/what-is-psychiatry" target="_blank" data-en="Medication Management" data-te="మందుల నిర్వహణ" data-ur="دوائیوں کا انتظام">Medication Management</a></li>
+      <li><a href="https://www.who.int/news-room/fact-sheets/detail/mental-disorders" target="_blank" data-en="General Health Consultation" data-te="సాధారణ ఆరోగ్య సలహా" data-ur="عمومی صحت کی مشاورت">General Health Consultation</a></li>
     </ul>
   </section>
+
   <section id="testimonials" class="tab-content">
-    <h2>Patient Testimonials</h2>
+    <h2 data-en="Patient Testimonials" data-te="రోగుల సాక్ష్యాలు" data-ur="مریضوں کی گواہیاں">Patient Testimonials</h2>
     
     <div class="testimonial-item">
-      <p>"Dr. Osman Ali helped me through the most difficult phase of my life with patience and kindness. I'm forever grateful."</p>
-      <div class="testimonial-author">– Patient A</div>
+      <p data-en='"Dr. Osman Ali helped me through the most difficult phase of my life with patience and kindness. I am forever grateful."' data-te='"డా. ఉస్మాన్ అలీ నా జీవితంలోని అత్యంత కష్టమైన దశలో ధైర్యం మరియు దయతో నాకు సహాయం చేశారు. నేను ఎల్లప్పుడూ కృతజ్ఞుడిని."' data-ur='"ڈاکٹر عثمان علی نے میری زندگی کے سب سے مشکل دور میں صبر اور احسان کے ساتھ میری مدد کی۔ میں ہمیشہ شکر گزار ہوں۔"'>"Dr. Osman Ali helped me through the most difficult phase of my life with patience and kindness. I am forever grateful."</p>
+      <div class="testimonial-author" data-en="– Patient A" data-te="– రోగి A" data-ur="– مریض A">– Patient A</div>
     </div>
     
     <div class="testimonial-item">
-      <p>"Highly professional and very understanding. I've been visiting Dr. Osman for over 2 years and my mental health has improved drastically."</p>
-      <div class="testimonial-author">– Patient B</div>
+      <p data-en='"Highly professional and very understanding. I have been visiting Dr. Osman for over 2 years and my mental health has improved drastically."' data-te='"అత్యంత వృత్తిపరమైన మరియు చాలా అర్థం చేసుకోగల. నేను 2 సంవత్సరాలకు మించి డా. ఉస్మాన్‌ను సందర్శిస్తున్నాను మరియు నా మానసిక ఆరోగ్యం గణనీయంగా మెరుగుపడింది."' data-ur='"انتہائی پیشہ ور اور بہت سمجھدار۔ میں 2 سال سے زیادہ عرصے سے ڈاکٹر عثمان سے ملاقات کر رہا ہوں اور میری ذہنی صحت میں نمایاں بہتری آئی ہے۔"'>"Highly professional and very understanding. I have been visiting Dr. Osman for over 2 years and my mental health has improved drastically."</p>
+      <div class="testimonial-author" data-en="– Patient B" data-te="– రోగి B" data-ur="– مریض B">– Patient B</div>
     </div>
 
     <div id="user-testimonials"></div>
 
     <div class="testimonial-form">
-      <h3>Share Your Experience</h3>
+      <h3 data-en="Share Your Experience" data-te="మీ అనుభవాన్ని పంచుకోండి" data-ur="اپنا تجربہ شیئر کریں">Share Your Experience</h3>
       <form id="testimonialForm">
-        <label for="testimonial-name">Your Name (optional):</label>
-        <input type="text" id="testimonial-name" name="testimonial-name" placeholder="Anonymous" />
+        <label for="testimonial-name" data-en="Your Name (optional):" data-te="మీ పేరు (ఐచ్ఛికం):" data-ur="آپ کا نام (اختیاری):">Your Name (optional):</label>
+        <input type="text" id="testimonial-name" name="testimonial-name" data-en="Anonymous" data-te="అజ్ఞాత" data-ur="نامعلوم" placeholder="Anonymous" />
         
-        <label for="testimonial-text">Your Testimonial:</label>
-        <textarea id="testimonial-text" name="testimonial-text" rows="4" required placeholder="Share your experience with Dr. Osman Ali..."></textarea>
+        <label for="testimonial-text" data-en="Your Testimonial:" data-te="మీ సాక్ష్యం:" data-ur="آپ کی گواہی:">Your Testimonial:</label>
+        <textarea id="testimonial-text" name="testimonial-text" rows="4" required data-en="Share your experience with Dr. Osman Ali..." data-te="డా. ఉస్మాన్ అలీతో మీ అనుభవాన్ని పంచుకోండి..." data-ur="ڈاکٹر عثمان علی کے ساتھ اپنا تجربہ شیئر کریں..." placeholder="Share your experience with Dr. Osman Ali..."></textarea>
         
-        <button type="submit">Submit Testimonial</button>
+        <button type="submit" data-en="Submit Testimonial" data-te="సాక్ష్యం సమర్పించండి" data-ur="گواہی جمع کریں">Submit Testimonial</button>
       </form>
     </div>
   </section>
+
   <section id="gallery" class="tab-content">
-    <h2>Gallery</h2>
+    <h2 data-en="Gallery" data-te="గ్యాలరీ" data-ur="گیلری">Gallery</h2>
     <input type="file" id="gallery-upload" multiple accept="image/*,video/*" />
     <div class="gallery-grid" id="gallery-display"></div>
   </section>
+
   <section id="contact" class="tab-content">
-    <h2>Contact Us</h2>
+    <h2 data-en="Contact Us" data-te="మాతో సంప్రదించండి" data-ur="ہم سے رابطہ کریں">Contact Us</h2>
     <form id="contactForm">
-      <label for="name">Name:</label>
+      <label for="name" data-en="Name:" data-te="పేరు:" data-ur="نام:">Name:</label>
       <input type="text" id="name" name="name" required />
-      <label for="email">Email:</label>
+      <label for="email" data-en="Email:" data-te="ఇమెయిల్:" data-ur="ای میل:">Email:</label>
       <input type="email" id="email" name="email" required />
-      <label for="message">Message:</label>
+      <label for="message" data-en="Message:" data-te="సందేశం:" data-ur="پیغام:">Message:</label>
       <textarea id="message" name="message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
+      <button type="submit" data-en="Send Message" data-te="సందేశం పంపండి" data-ur="پیغام بھیجیں">Send Message</button>
     </form>
-    <p><strong>Phone:</strong> +91-XXXXXXXXXX<br>
-       <strong>Email:</strong> drosmanali@gmail.com<br>
-       <strong>Address:</strong> Himayat Nagar, Hyderabad
+    <p>
+      <strong data-en="Phone:" data-te="ఫోన్:" data-ur="فون:">Phone:</strong> +91-XXXXXXXXXX<br>
+      <strong data-en="Email:" data-te="ఇమెయిల్:" data-ur="ای میل:">Email:</strong> drosmanali@gmail.com<br>
+      <strong data-en="Address:" data-te="చిరునామా:" data-ur="پتہ:">Address:</strong> <span data-en="Himayat Nagar, Hyderabad" data-te="హిమాయత్ నగర్, హైదరాబాద్" data-ur="حمایت نگر، حیدرآباد">Himayat Nagar, Hyderabad</span>
     </p>
   </section>
+
   <footer>
-    <p>&copy; 2025 Dr. Md Osman Ali. All rights reserved.</p>
+    <p data-en="© 2025 Dr. Md Osman Ali. All rights reserved." data-te="© 2025 డా. మహమ్మద్ ఉస్మాన్ అలీ. అన్ని హక్కులు సురక్షితం." data-ur="© 2025 ڈاکٹر محمد عثمان علی۔ تمام حقوق محفوظ ہیں۔">© 2025 Dr. Md Osman Ali. All rights reserved.</p>
   </footer>
+
   <script>
     // In-memory storage for testimonials and gallery items
     let testimonials = [];
     let galleryItems = [];
     let doctorPhotoSrc = '';
+    let currentLanguage = 'english';
+
+    // Language translations
+    const translations = {
+      thankYou: {
+        english: 'Thank you for contacting us! We will get back to you soon.',
+        telugu: 'మమ్మల్ని సంప్రదించినందుకు ధన్యవాదాలు! మేము త్వరలో మీకు తిరిగి సమాధానం ఇస్తాము.',
+        urdu: 'ہم سے رابطہ کرنے کے لیے آپ کا شکریہ! ہم جلد ہی آپ کو جواب دیں گے۔'
+      },
+      testimonialThanks: {
+        english: 'Thank you for sharing your testimonial!',
+        telugu: 'మీ సాక్ష్యాన్ని పంచుకున్నందుకు ధన్యవాదాలు!',
+        urdu: 'آپ کی گواہی شیئر کرنے کے لیے آپ کا شکریہ!'
+      },
+      anonymous: {
+        english: 'Anonymous',
+        telugu: 'అజ్ఞాత',
+        urdu: 'نامعلوم'
+      }
+    };
+
+    // Language switching function
+    function changeLanguage(lang) {
+      currentLanguage = lang;
+      
+      // Update active language button
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`.lang-btn[onclick="changeLanguage('${lang}')"]`).classList.add('active');
+      
+      // Update all translatable elements
+      const elements = document.querySelectorAll('[data-en]');
+      elements.forEach(element => {
+        const key = lang === 'english' ? 'en' : (lang === 'telugu' ? 'te' : 'ur');
+        if (element.getAttribute(`data-${key}`)) {
+          if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+            element.placeholder = element.getAttribute(`data-${key}`);
+          } else {
+            element.textContent = element.getAttribute(`data-${key}`);
+          }
+        }
+      });
+
+      // Update body class for RTL/LTR
+      document.body.className = '';
+      if (lang === 'urdu') {
+        document.body.classList.add('urdu');
+      } else if (lang === 'telugu') {
+        document.body.classList.add('telugu');
+      }
+
+      // Refresh testimonials to update language
+      displayTestimonials();
+    }
 
     // Tab switching
     const links = document.querySelectorAll('.tab-link');
@@ -322,7 +445,7 @@
     // Contact form
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Thank you for contacting us! We will get back to you soon.');
+      alert(translations.thankYou[currentLanguage]);
       this.reset();
     });
 
@@ -330,15 +453,15 @@
     document.getElementById('testimonialForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
-      const name = document.getElementById('testimonial-name').value || 'Anonymous';
+      const name = document.getElementById('testimonial-name').value || translations.anonymous[currentLanguage];
       const text = document.getElementById('testimonial-text').value;
       
       if (text.trim()) {
-        const testimonial = { name: name, text: text };
+        const testimonial = { name: name, text: text, language: currentLanguage };
         testimonials.push(testimonial);
         displayTestimonials();
         this.reset();
-        alert('Thank you for sharing your testimonial!');
+        alert(translations.testimonialThanks[currentLanguage]);
       }
     });
 
@@ -437,4 +560,3 @@
   </script>
 </body>
 </html>
-
