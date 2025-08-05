@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Dr. Md Osman Ali - Psychotherapist</title>
   <style>
     body {
@@ -220,7 +220,9 @@
 
     /* Language-specific styles */
     .urdu, .telugu {
-      font-family: 'Arial Unicode MS', sans-serif;
+      font-family: 'Arial Unicode MS', 'Noto Sans', sans-serif;
+    }
+    .urdu {
       direction: rtl;
       text-align: right;
     }
@@ -228,32 +230,124 @@
       direction: ltr;
       text-align: left;
     }
+    
+    /* Mobile touch improvements */
+    * {
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+    }
+    
+    button, a, input[type="file"] {
+      -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+    }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 768px) {
       header {
-        padding-top: 60px;
+        padding: 15px;
+        padding-top: 70px;
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+      .header-left {
+        order: 2;
+        flex: none;
+      }
+      .header-left h1 {
+        font-size: 20px;
+        margin-bottom: 5px;
+      }
+      .header-left p {
+        font-size: 12px;
+      }
+      .main-photo {
+        width: 60px;
+        height: 60px;
+        order: 1;
+      }
+      #photo-upload {
+        max-width: 150px;
+        font-size: 12px;
       }
       nav {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+        padding: 0 10px;
       }
       nav a {
-        min-width: 120px;
+        min-width: 100px;
+        padding: 12px 15px;
         text-align: center;
         border-right: 1px solid #005fa3;
         border-bottom: none;
+        font-size: 14px;
       }
       .language-toggle {
-        position: relative;
-        top: auto;
-        right: auto;
-        margin-top: 10px;
-        justify-content: center;
-        width: 100%;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        left: auto;
+        justify-content: flex-end;
+        width: auto;
+        gap: 5px;
       }
       .lang-btn {
-        flex: 1;
-        max-width: 80px;
+        flex: none;
+        max-width: none;
+        min-width: 50px;
+        padding: 4px 8px;
+        font-size: 11px;
+      }
+      section.tab-content {
+        padding: 15px;
+      }
+      .services-list li {
+        padding: 12px;
+        margin: 10px 0;
+      }
+      .testimonial-item, .testimonial-form {
+        padding: 15px;
+        margin: 10px 0;
+      }
+      .gallery-item {
+        width: 140px;
+      }
+      form input, form textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+      }
+      footer {
+        padding: 12px;
+        font-size: 12px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      header {
+        padding: 10px;
+        padding-top: 60px;
+      }
+      .header-left h1 {
+        font-size: 18px;
+      }
+      .header-left p {
+        font-size: 11px;
+      }
+      nav a {
+        min-width: 90px;
+        padding: 10px 12px;
+        font-size: 13px;
+      }
+      .lang-btn {
+        min-width: 45px;
+        padding: 3px 6px;
+        font-size: 10px;
+      }
+      section.tab-content {
+        padding: 12px;
+      }
+      .gallery-item {
+        width: 120px;
       }
     }
   </style>
